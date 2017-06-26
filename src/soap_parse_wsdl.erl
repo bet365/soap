@@ -202,6 +202,7 @@ add_schemas([Xsd| Tail], AccModel, Options, ImportList, Imported) ->
     Include_any_attribs = 
         proplists:get_value(include_any_attribs, Options, false),
     ErlsomOptions = proplists:get_value(erlsom_options, Options, []),
+    Namespace_options = proplists:get_value(namespaces, Options, []),
     Tns = erlsom_lib:getTargetNamespaceFromXsd(Xsd),    
     Prefix = 
         case lists:keyfind(Tns, 1, ImportList) of
@@ -212,7 +213,8 @@ add_schemas([Xsd| Tail], AccModel, Options, ImportList, Imported) ->
         end,
     {ok, Model} =
          erlsom_compile:compile_parsed_xsd(Xsd,
-            [{include_files, ImportList}, 
+            [{namespaces, Namespace_options},
+             {include_files, ImportList},
              {already_imported, Imported}, 
              {include_any_attribs, Include_any_attribs},
              {prefix, Prefix} | ErlsomOptions]),
