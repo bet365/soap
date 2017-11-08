@@ -19,7 +19,7 @@ The following standards have been used as the starting points:
 - [SOAP 1.1](https://www.w3.org/TR/2000/NOTE-SOAP-20000508/)
 - [SOAP 1.2](https://www.w3.org/TR/soap/)
 - [SOAP Messages with Attachments](https://www.w3.org/TR/SOAP-attachments)
-- [WSDL 1.1](https://www.w3.org/TR/wsdl)
+- [WSDL 1.1](https://www.w3.org/TR/2001/NOTE-wsdl-20010315)
 - [WSDL 1.1 Binding extension for SOAP 1.2](https://www.w3.org/Submission/wsdl11soap12/)
 - [WSDL 2.0](https://www.w3.org/TR/2007/REC-wsdl20-20070626/) - but only to a limited extent.
 

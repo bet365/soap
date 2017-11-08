@@ -549,8 +549,8 @@ add_model({Xsd, Ns}, {CombinedModel, Namespaces, ErlsomOptions}) ->
     {ok, Model} = erlsom:compile_xsd(Xsd, 
                                      [{include_any_attribs, false}
                                      ,{already_imported, Namespaces}
-                                     ,{prefix, Prefix}
-                                     ,{strict, true} | ErlsomOptions]),
+                                     ,{namespaces, [{Ns, Prefix}]} 
+                                     | ErlsomOptions]),
     NewModel = case CombinedModel of
                    undefined ->
                        Model;

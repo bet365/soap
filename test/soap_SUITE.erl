@@ -129,6 +129,9 @@ groups() ->
       ,{tempconvert_local, [], [tempconvert_local_ok]}
       ,test_client
       ]}
+  ,{strict, [],
+      [strict
+      ]}
   ,{tempconvert_12, [],
       [tempconvert_w3schools %% same as for v. 1.1
       ,tempconvert_fault %% the server only returns a fault with v 1.2
@@ -237,6 +240,20 @@ init_per_group(tempconvert, Config) ->
             ],
   compile_wsdl("tempconvert.wsdl", Options, Config),
   Config;
+init_per_group(strict, Config) ->
+  Options = [{http_client, ibrowse}, {http_server, cowboy_version()},
+             {namespaces, [{"http://www.w3schools.com/xml/", "t"}]},
+             {generate, both}, {generate_tests, none},
+             {client_name, "tempconvert_client_strict"},
+             {server_name, "tempconvert_server_strict"},
+             {erlsom_options, [{strict, true}]},
+             {test_values,true}, 
+             {service, "TempConvert"}, {port, "TempConvertSoap"}
+            ],
+  compile_wsdl("tempconvert_float.wsdl", Options, Config),
+  {ok, _} = soap:start_server(tempconvert_server_strict, [{port, 8080},
+                                                   {http_server, cowboy_version()}]),
+  Config;
 init_per_group(tempconvert_12, Config) ->
   inets:start(),
   Options = [{http_client, inets},  %% use inets for a change
@@ -301,6 +318,9 @@ end_per_group(cowboy_server, _Config) ->
 end_per_group(tempconvert_local, _Config) ->
   soap:stop_server(tempconvert_server),
   ok;
+end_per_group(strict, _Config) ->
+  soap:stop_server(tempconvert_server_strict),
+  ok;
 end_per_group(wsdl_2_0, _Config) ->
   soap:stop_server(wsdl_2_0_server),
   ok;
@@ -328,6 +348,7 @@ all() ->
   {group, inets_server},
   {group, tempconvert},
   {group, tempconvert_12},
+  {group, strict},
   {group, client},
   {group, soap_req},
   {group, wsdls}, %% takes a long time
@@ -445,6 +466,12 @@ tempconvert_local_ok(_Config) ->
   {ok,200, _, [], _, [], _} = 
     tempconvert_client:'CelsiusToFahrenheit'(
                          {'t:CelsiusToFahrenheit', "37.8"}, [], 
+                         [{url, "http://localhost:8080"}]).
+
+strict(_Config) ->
+  {ok,200, _, [], {'t:CelsiusToFahrenheitResponse',3.14159}, [], _} = 
+    tempconvert_client_strict:'CelsiusToFahrenheit'(
+                         {'t:CelsiusToFahrenheit', 37.8}, [], 
                          [{url, "http://localhost:8080"}]).
 
 wsdl_2_0_example(_Config) ->

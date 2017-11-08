@@ -312,15 +312,28 @@ wsdl2erlang(File, Options) ->
                      Port_names), 
     Namespaces = soap_compile_wsdl:get_namespaces(File, Options),
     Prefixes = get_prefixes(Namespaces, Options),
-    Strict = proplists:get_value(strict, Options, true),
+    %% The default for 'strict' differs between soap and erlsom.
+    %% For reasons of backwards compatibility the Erlsom `strict` option
+    %% can be set in 2 ways: as an `erlsom_option` and as a separate
+    %% explicit option (the explicit option "wins" if both variants are 
+    %% provided).
+    ErlsomOpts = proplists:get_value(erlsom_options, Options, []),
+    Strict1 = proplists:get_value(strict, ErlsomOpts, true),
+    Strict2 = proplists:get_value(strict, Options, Strict1),
+    ErlsomOpts2 = [Option 
+                   || {Key, _} = Option <- ErlsomOpts, Key /= strict],
     Remove = [generate, http_server, http_client, port, service, namespaces,
-              client_name, server_name, hrl_name, strict, generate_tests],
+              client_name, server_name, hrl_name, erlsom_options, strict,
+              generate_tests],
     Other_options = [Option || {Key, _} = Option <- Options, 
                                           not(lists:member(Key, Remove))],
     Options2 = lists:flatten([{generate, Generate}, {namespaces, Prefixes}, 
                               {generate_tests, Generate_tests},
                               Http_server_options, Http_client_options, 
-                              {strict, Strict} | Other_options]),
+                              {erlsom_options, [{namespaces, Prefixes}, 
+                                                {strict, Strict2} 
+                                                | ErlsomOpts2]}
+                              | Other_options]),
     soap_compile_wsdl:file(File, Service, Port, Options2, Hrl_name).
 
 %% Generate a module with test functions (using default values) for every 

@@ -152,14 +152,17 @@ The following options are available:
 
 - `{erlsom_options, proplists:proplist()}` - These options are passed on to
   erlsom. This can for example be used to specify the options for dealing
-  with imported namespaces in the `types` (xsd) section of the WSDL. See
-  the documentation of erlsom for more details.
+  with imported namespaces in the `types` (xsd) section of the WSDL. The
+  default value for this option is `[{strict, true}]`. 
 
 - `{strict, boolean()}` - If `false`, the functions that decode and encode XML
   will convert only integer (xsd:integer) and boolean values from the XML
   to and from Erlang integer/boolean values (this is the standard Erlsom behaviour). All
   other types will be represented as strings (without testing the
-  validity). 
+  validity).  (Note that this option can also be set as one of the
+  `erlsom_options`, see above. If the two settings conflict, the version
+  that is set explicitly prevails over the value that is part of the
+  `erlsom_options`).
   
   If `true` (the default for the `soap` application) a number of
   additional data-types will be converted (and checked for validity, hence

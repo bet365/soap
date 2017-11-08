@@ -170,7 +170,8 @@ call_http(Http_body,
                      version = Version,
                      url = Url}, Http_headers, Content_type) ->
     %%io:format("request: ~nheaders: ~p~nbody: ~s~n", [Http_headers, Http_body]),    
-    Http_res = Client:http_request(Url, Http_body, Http_client_options, 
+    Http_options = lists:keydelete(http_headers, 1, Http_client_options),
+    Http_res = Client:http_request(Url, Http_body, Http_options, 
                                    Http_headers, Content_type),
     case Http_res of
         {ok, Code, Response_headers, Response_body} 

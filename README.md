@@ -22,8 +22,7 @@ provided.
 The figure below provides a high level overview of the application and the
 main integration points.
 
-![SOAP application](doc/soap architecture.png "Overview of the SOAP
-application")
+![Overview of the SOAP application](doc/soap%20architecture.png?raw=true)
 
 The starting point can be a WSDL for which you need to
 implement an Erlang SOAP client or server, or an existing Erlang function
@@ -33,7 +32,7 @@ The figure below shows how the application can generate the relevant modules,
 either starting from a WSDL ("contract first") or starting from a set of
 Erlang type specifications ("contract last").
 
-![Process and artifacts](doc/soap process.png "Process and artifacts")
+![Process and artifacts](doc/soap%20process.png?raw=true)
 
 
 ## Documentation overview
