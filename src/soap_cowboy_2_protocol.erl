@@ -29,7 +29,7 @@
 -module(soap_cowboy_2_protocol).
 %%-behaviour(cowboy_sub_protocol).
 
--export([upgrade/6]).
+-export([upgrade/4]).
 -export([enrich_req/2]).
 -export([respond/4]).
 
@@ -45,10 +45,10 @@
 %% From the Cowboy documentation:
 %% This callback is expected to behave like a middleware and to return an
 %% updated req object and environment.
--spec upgrade(Cowboy_req::cowboy_req(), Env::cowboy_env(),
-              Soap_handler::module(), {Implementation_handler::module(), Options::any()},
-              Timeout::any(), Hibernate::any()) -> {ok, cowboy_req(), cowboy_env()}. 
-upgrade(Cowboy_req, Env, Soap_handler, {Handler, Options}, _, _) ->
+-spec upgrade(Cowboy_req::cowboy_req(), Env::cowboy_env(), Soap_handler::module(),
+              {Implementation_handler::module(), Options::any()}) ->
+  {ok, cowboy_req(), cowboy_env()}.
+upgrade(Cowboy_req, Env, Soap_handler, {Handler, Options}) ->
   soap_cowboy_protocol:upgrade(Cowboy_req, Env, Soap_handler, 
                                {Handler, Options}, cowboy_2, ?MODULE).
 
