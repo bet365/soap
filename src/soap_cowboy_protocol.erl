@@ -28,7 +28,7 @@
 
 -module(soap_cowboy_protocol).
 
--export([upgrade/6]).
+-export([upgrade/7]).
 
 -record(state, {
   env :: cowboy_middleware:env(),
@@ -51,12 +51,12 @@
 -spec upgrade(Cowboy_req::cowboy_req(), Env::cowboy_env(),
               Soap_handler::module(), {Implementation_handler::module(), Options::any()},
               Version::atom(),
-              Version_module::module()) -> {ok, cowboy_req(), cowboy_env()}. 
-upgrade(Cowboy_req, Env, _, {Handler, Options}, Version, Version_module) ->
+              Version_module::module(), Body::binary()) -> {ok, cowboy_req(), cowboy_env()}. 
+upgrade(Cowboy_req, Env, _, {Handler, Options}, Version, Version_module, Body) ->
   Cowboy_state = #state{env = Env, handler = Handler},
   case soap_server_handler:new_req(Handler, Version, Options, Cowboy_req) of
     {continue, Soap_req} ->
-      check_conformance(Soap_req, Cowboy_req, Cowboy_state, Version_module);
+      check_conformance(Soap_req, Cowboy_req, Cowboy_state, Version_module, Body);
     {ok, _StatusCode, _Headers, _Body, _Server_req} = Error ->
       make_response(Error, Cowboy_state, Version_module)
   end.
@@ -65,25 +65,22 @@ upgrade(Cowboy_req, Env, _, {Handler, Options}, Version, Version_module) ->
 %%% Internal functions
 %%% ============================================================================
 
-check_conformance(Soap_req, Cowboy_req, Cowboy_state, Version_module) ->
+check_conformance(Soap_req, Cowboy_req, Cowboy_state, Version_module, Body) ->
   %% collect some information about the protocol, so that 
   %% conformance can be checked.
   Soap_req2 = Version_module:enrich_req(Cowboy_req, Soap_req),
   case soap_server_handler:check_http_conformance(Soap_req2) of
     {continue, Soap_req3} ->
-      handle_xml(Soap_req3, Cowboy_state, Version_module);
+      handle_xml(Soap_req3, Cowboy_state, Version_module, Body);
     {ok, _StatusCode, _Headers, _Body, _Server_req} = Error ->
       make_response(Error, Cowboy_state, Version_module)
   end.
 
-handle_xml(Soap_req, Cowboy_state, Version_module) ->
-  Cowboy_req = soap_req:server_req(Soap_req),
-  {ok, Message, Cowboy_req2} = cowboy_req:body(Cowboy_req),
-  Soap_req2 = soap_req:set_server_req(Soap_req, Cowboy_req2),
-  Soap_req3 = soap_req:set_http_body(Soap_req2, Message),
-  Content_type = soap_req:content_type(Soap_req3),
+handle_xml(Soap_req, Cowboy_state, Version_module, Message) ->
+  Soap_req2 = soap_req:set_http_body(Soap_req, Message),
+  Content_type = soap_req:content_type(Soap_req2),
   %% get the soap message (Xml) from the request body
-  {Xml, Soap_req4} =
+  {Xml, Soap_req3} =
     case maybe_content_type(Content_type) of
       "multipart/related" -> 
         %% soap with attachments, the message is in the first part
@@ -92,16 +89,16 @@ handle_xml(Soap_req, Cowboy_state, Version_module) ->
             mime_decode(Message, Content_type),
             {Body, 
              soap_req:set_mime_headers(
-               soap_req:set_req_attachments(Soap_req3, Attachments), 
+               soap_req:set_req_attachments(Soap_req2, Attachments), 
                Mime_headers)}
       catch
         _Class:_Type ->
-          {Message, Soap_req3}
+          {Message, Soap_req2}
       end;
     _ ->
-      {Message, Soap_req3}
+      {Message, Soap_req2}
   end,
-  Handler_resp = soap_server_handler:handle_message(Xml, Soap_req4),
+  Handler_resp = soap_server_handler:handle_message(Xml, Soap_req3),
   make_response(Handler_resp, Cowboy_state, Version_module).
 
 maybe_content_type(undefined) ->

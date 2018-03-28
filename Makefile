@@ -9,11 +9,12 @@ compile:
 	@rebar compile
 
 ct: compile test_deps
+	mkdir -p ./logs
 	@echo "Running common tests..."
 	-@ct_run -noshell -pa ebin \
 		-pa deps/*/ebin \
 		-pa test/deps/*/ebin \
-		-name test \
+		-sname test \
 		-logdir ./logs \
 		-env TEST_DIR ./test \
 		-spec ./test/test_specs.spec \

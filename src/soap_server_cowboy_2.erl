@@ -65,15 +65,15 @@ start(Module) ->
 start(Module, Options) ->
     Port = proplists:get_value(port, Options, 8080),
     Acceptors = proplists:get_value(nr_acceptors, Options, 100),
-    ok = application:ensure_started(crypto),
-    ok = application:ensure_started(ranch),
-    ok = application:ensure_started(cowlib),
-    ok = application:ensure_started(cowboy),
-    Dispatch = cowboy_router:compile([
-	{'_', [{'_', ?MODULE, {Module, Options}}]}]),
-    {ok, _} = cowboy:start_http(http, Acceptors, [{port, Port}], [
-		{env, [{dispatch, Dispatch}]}]).
- 
+    {ok, _} = application:ensure_all_started(cowboy),
+    Dispatch = cowboy_router:compile(
+                 [
+                  {'_', [{'_', ?MODULE, {Module, Options}}]}]),
+
+    {ok, _} = cowboy:start_clear(http, [{port, Port}],
+                                 #{env => #{dispatch => Dispatch}}
+                                ).
+
 stop() ->
     cowboy:stop_listener(http),
     application:stop(cowboy), 
