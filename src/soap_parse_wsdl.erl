@@ -606,14 +606,9 @@ namespace_decl({Uri, Prefix}) ->
 %% Get a file from an URL spec.
 %% ---------------------------------------------------------------------------
 get_url_file("http://"++_ = URL) ->
-    case httpc:request(URL) of
-        {ok,{{_HTTP,200,_OK}, _Headers, Body}} ->
-            {ok, Body};
-        {ok,{{_HTTP, _RC, _Emsg}, _Headers, _Body}} ->
-            {error, "failed to retrieve: "++URL};
-        {error, _Reason} ->
-            {error, "failed to retrieve: "++URL}
-        end;
+    get_http_file(URL);
+get_url_file("https://"++_ = URL) ->
+    get_http_file(URL);
 get_url_file("file://" ++ F_name) ->
     case file:read_file(F_name) of
         {ok, Bin} ->
@@ -623,3 +618,13 @@ get_url_file("file://" ++ F_name) ->
     end;
 get_url_file(F_name) ->
     get_url_file("file://" ++ F_name).
+
+get_http_file(URL) ->
+    case httpc:request(URL) of
+        {ok,{{_HTTP,200,_OK}, _Headers, Body}} ->
+            {ok, Body};
+        {ok,{{_HTTP, _RC, _Emsg}, _Headers, _Body}} ->
+            {error, "failed to retrieve: "++URL};
+        {error, _Reason} ->
+            {error, "failed to retrieve: "++URL}
+        end.
