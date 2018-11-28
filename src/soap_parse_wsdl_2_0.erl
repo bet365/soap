@@ -376,6 +376,15 @@ get_url_file("http://"++_ = URL, _Options) ->
         {error, _Reason} ->
             {error, "failed to retrieve: "++URL}
     end;
+get_url_file("https://"++_ = URL, _Options) ->
+    case httpc:request(URL) of
+        {ok,{{_HTTP,200,_OK}, _Headers, Body}} ->
+            {ok, Body};
+        {ok,{{_HTTP,_RC,_Emsg}, _Headers, _Body}} ->
+            {error, "failed to retrieve: "++URL};
+        {error, _Reason} ->
+            {error, "failed to retrieve: "++URL}
+    end;
 get_url_file("file://" ++ F_name, Options) ->
     File_name = 
         case proplists:get_value(include_path, Options) of
