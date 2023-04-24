@@ -78,7 +78,7 @@ check_conformance(Soap_req, Cowboy_req, Cowboy_state, Version_module) ->
 
 handle_xml(Soap_req, Cowboy_state, Version_module) ->
   Cowboy_req = soap_req:server_req(Soap_req),
-  {ok, Message, Cowboy_req2} = cowboy_req:body(Cowboy_req),
+  {ok, Message, Cowboy_req2} = cowboy_req:read_body(Cowboy_req),
   Soap_req2 = soap_req:set_server_req(Soap_req, Cowboy_req2),
   Soap_req3 = soap_req:set_http_body(Soap_req2, Message),
   Content_type = soap_req:content_type(Soap_req3),

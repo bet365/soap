@@ -98,10 +98,10 @@ new_req(Handler, Server, Options, Server_req) ->
         %% function, rather than by the `init` function not being defined?
         error:undef ->
             {continue, soap_req:set_handler_state(New_req, Options)};
-        Class:Reason ->
+        Class:Reason:Stacktrace ->
             Soap_error = #soap_error{type = server,
                                      class = Class,
-                                     stacktrace = erlang:get_stacktrace(),
+                                     stacktrace = Stacktrace,
                                      reason = Reason,
                                      handler = Handler,
                                      soap_req = New_req,
@@ -136,7 +136,7 @@ handle_message(Message, Soap_req) ->
         {ok, SoapReq2, _Tail} ->
             soap_req:http_response(SoapReq2)
     catch
-        Class:Reason ->
+        Class:Reason:Stacktrace ->
             Soap_error = 
                 case {Class, Reason} of
                     {throw, #soap_error{}} ->
@@ -144,7 +144,7 @@ handle_message(Message, Soap_req) ->
                     {_, _} ->
                         #soap_error{type = client,
                                     class = Class,
-                                    stacktrace = erlang:get_stacktrace(),
+                                    stacktrace = Stacktrace,
                                     reason = Reason,
                                     handler = Handler,
                                     handler_state = Handler_state,
@@ -219,8 +219,8 @@ check_soap_conformance(Soap_req) ->
     catch
         error:Reason when Reason == function_clause; Reason == undef ->
             default_conformance_check(Soap_req);
-        Class:Reason ->
-            throw(callback_error(Class, Reason, Soap_req, Handler_state))
+        Class:Reason:Stacktrace ->
+            throw(callback_error(Class, Reason, Soap_req, Handler_state, Stacktrace))
     end.
 
 
@@ -316,10 +316,10 @@ xml_parser_cb_wrapped(Event, #p_state{state = _Parser_state,
         %% TODO: differentiate more (perhaps improve erlsom error codes)
         throw:#soap_error{} = Soap_error ->
             throw(Soap_error#soap_error{soap_req = Soap_req, handler_state = Handler_state});
-        Class:Reason ->
+        Class:Reason:Stacktrace ->
             throw(#soap_error{type = client,
                               class = Class,
-                              stacktrace = erlang:get_stacktrace(),
+                              stacktrace = Stacktrace,
                               reason = Reason,
                               handler = Handler,
                               handler_state = Handler_state,
@@ -471,11 +471,11 @@ xml_parser_cb({endElement, NS, "Body", _Prfx},
             %% and encode it.
             encode_soap_resp(Handler_resp)
         catch
-            Class:Reason -> 
+            Class:Reason:Stacktrace -> 
                 throw(#soap_error{class = Class, 
                                   reason = Reason, 
                                   type = server, 
-                                  stacktrace = erlang:get_stacktrace(),
+                                  stacktrace = Stacktrace,
                                   description = "exception in handler module",
                                   soap_req = Soap_req,
                                   handler_state = Handler_s})
@@ -504,15 +504,15 @@ try_header_fun(Fun, Soap_req, Handler_s) ->
     catch
         error:function_clause ->
             {ok, Soap_req, Handler_s};
-        Class:Reason ->
-            throw(callback_error(Class, Reason, Soap_req, Handler_s))
+        Class:Reason:Stacktrace ->
+            throw(callback_error(Class, Reason, Soap_req, Handler_s, Stacktrace))
     end.
 
-callback_error(Class, Reason, Soap_req, Handler_s) ->
+callback_error(Class, Reason, Soap_req, Handler_s, Stacktrace) ->
     #soap_error{class = Class, 
                 reason = Reason, 
                 type = server, 
-                stacktrace = erlang:get_stacktrace(),
+                stacktrace = Stacktrace,
                 description = "an unexpected error occcurred",
                 soap_req = Soap_req,
                 handler_state = Handler_s}.
@@ -539,10 +539,10 @@ get_header_parser(Handler, Namespace, Soap_req, Handler_s) ->
     catch
         error:function_clause ->
             Default(Namespace, Soap_req, Handler_s);
-        Class:Reason ->
+        Class:Reason:Stacktrace ->
             throw(#soap_error{type = server, 
                               description = "Header parser selection error", 
-                              stacktrace = erlang:get_stacktrace(),
+                              stacktrace = Stacktrace,
                               class = Class, reason = Reason})
     end.
 
@@ -550,12 +550,12 @@ parse_event(Parser, Event, State, Type) ->
     try 
         Parser(Event, State)
     catch
-        Class:Reason ->
+        Class:Reason:Stacktrace ->
             %% Presumably failing to parse is a client error (incorrect xml) - but it 
             %% could also be a server error, of course - we don't really know.
             throw(#soap_error{type = client, 
                               description = "Parser error (" ++ Type ++ ")", 
-                              stacktrace = erlang:get_stacktrace(),
+                              stacktrace = Stacktrace,
                               class = Class, reason = Reason})
     end.
 
