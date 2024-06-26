@@ -51,11 +51,11 @@
     soap_ns :: string(),
     state :: atom(),
     parser :: fun(),
-    header_parser :: fun(),
+    header_parser :: fun() | undefined,
     fault_parser :: fun(),
     parser_state :: any(),
     soap_headers = [] :: [string() | tuple()],
-    soap_body :: string() | tuple(),
+    soap_body :: string() | tuple() | undefined,
     is_fault = false :: boolean(),
     namespaces = [] :: [{prefix(), uri()}]
 }).
@@ -259,7 +259,9 @@ parse_xml(Message, Model, Http_status, Http_headers,
     try erlsom:parse_sax(Message, 
                          #p_state{model = Model, version = Version,
                                   soap_ns = Ns, state = start,
-                                  handler = Handler},
+                                  handler = Handler,
+                                  parser = fun erlsom_parse:xml2StructCallback/2,
+                                  fault_parser = fun soap_fault:parse_fault/3},
                          fun xml_parser_cb_wrapped/2, []) of
         {ok, #p_state{is_fault = true,
                       soap_headers = Decoded_headers,
@@ -355,27 +357,27 @@ xml_parser_cb({startElement, Ns, "Body", _Prfx, _Attrs},
 xml_parser_cb({startElement, Ns, "Fault", _Prfx, _Attrs} = Event,
               #p_state{state = body,
                        version = Version,
+                       fault_parser = Fault_parser,
                        namespaces = Namespaces,
                        soap_ns = Ns} = S) ->
     Start_state = soap_fault:parse_fault_start(Version),
-    Fault_parser = fun soap_fault:parse_fault/3,
     S1 = parse_event(Fault_parser, startDocument, Namespaces, Start_state),
     %% the event that we just received from the sax parser is recycled
     S2 = parse_event(Fault_parser, Event, Namespaces, S1),
     S#p_state{state = parsing_fault, is_fault = true, 
-              fault_parser = Fault_parser, parser_state = S2};
+              parser_state = S2};
 
 %% parsing the body
 xml_parser_cb({startElement, _Namespace, _LocalName, _Prfx, _Attrs} = Event,
               #p_state{state = body, 
                        model = Model, 
+                       parser = Parser,
                        namespaces = N_spaces} = S) ->
     Callback_state = erlsom_parse:new_state(Model, N_spaces),
     %% a new "startDocument" event is injected to get the body parser going.
-    S1 = erlsom_parse:xml2StructCallback(startDocument, Callback_state),
-    S2 = erlsom_parse:xml2StructCallback(Event, S1),
-    S#p_state{state = parsing_body, parser_state = S2, 
-              parser = fun erlsom_parse:xml2StructCallback/2};
+    S1 = Parser(startDocument, Callback_state),
+    S2 = Parser(Event, S1),
+    S#p_state{state = parsing_body, parser_state = S2};
 xml_parser_cb({endElement, Ns, "Body", _Prfx},
               #p_state{state = body,
                        soap_ns = Ns} = S) ->

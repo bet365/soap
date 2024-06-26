@@ -31,8 +31,8 @@
     in_type :: [{string(), atom()}]  | atom(), %% the list type is only used
                                                %% during construction of the 
                                                %% interface
-    out_type :: [{string(), atom()}] | undefined | atom(), %% see above
-    fault_types :: [atom()]}).
+    out_type :: [{string(), atom()}] | undefined | atom() %% see above
+}).
 -type op() :: #op{}.
 
 -record(interface, {

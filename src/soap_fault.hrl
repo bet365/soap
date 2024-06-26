@@ -26,9 +26,9 @@
                       tag :: string(),
                       text :: string()}).
 
--record(faultcode, {uri :: string(),
+-record(faultcode, {uri :: string() | undefined,
                     code :: string() | atom(),
-                    subcode :: #faultcode{} % only v. 1.2
+                    subcode :: #faultcode{} | undefined % only v. 1.2
                    }).
 
 -record(faultreason, {text :: string(),
