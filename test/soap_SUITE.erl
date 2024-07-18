@@ -68,6 +68,7 @@ suite() ->
 %% variable, but should NOT alter/remove any existing entries.
 %%--------------------------------------------------------------------
 init_per_suite(Config) ->
+  ssl:start(),
   ibrowse:start(),
   Config.
 
@@ -78,6 +79,7 @@ init_per_suite(Config) ->
 %% Description: Cleanup after the whole suite
 %%--------------------------------------------------------------------
 end_per_suite(_Config) ->
+  ssl:stop(),
   ibrowse:stop(),
   ok.
 
@@ -669,12 +671,11 @@ fault_1_2_actor(_Config) ->
 attachments_echo(_Config) ->
   Attachment = {[{"H1", "V1"}], <<"test attachment">>},
   {ok,200, _, [],_, [Attachment], Raw} =
-    %%europepmc_client:getFulltextXML(#getFulltextXML{id="PMC3542247", source="PMC"}, 
     %% can only import 1 generated hrl, because INTERFACE can only be defined 1x
-    europepmc_client:getFulltextXML({getFulltextXML, "PMC3542247", "PMC", undefined}, 
-                                [],
-                                [{url, "http://localhost:8080"}], 
-                                [Attachment]),
+    europepmc_client:getFulltextXML({'P:getFulltextXML', "PMC3542247", "PMC", undefined},
+                                    [],
+                                    [{url, "http://localhost:8080"}],
+                                    [Attachment]),
     io:format("Raw: ~p~n", [Raw]),
     {_, 15} = binary:match(Raw, <<"test attachment">>).
 

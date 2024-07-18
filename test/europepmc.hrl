@@ -57,63 +57,66 @@
                          role :: string(),
                          detail :: [#faultdetail{}]}).
 
+-ifndef(ERLSOM_QNAME_TYPES).
+-define(ERLSOM_QNAME_TYPES, true).
 %% xsd:QName values are translated to #qname{} records.
 -record(qname, {uri :: string(),
                 localPart :: string(),
                 prefix :: string(),
                 mappedPrefix :: string()}).
+-endif.
 
 
 
--record(listSearchFieldsResponse, {
-	return :: responseWrapper() | undefined}).
+-record('P:listSearchFieldsResponse', {
+	return :: 'P:responseWrapper'() | undefined}).
 
--type listSearchFieldsResponse() :: #listSearchFieldsResponse{}.
+-type 'P:listSearchFieldsResponse'() :: #'P:listSearchFieldsResponse'{}.
 
 
--record(listSearchFields, {
+-record('P:listSearchFields', {
 	email :: string() | undefined}).
 
--type listSearchFields() :: #listSearchFields{}.
+-type 'P:listSearchFields'() :: #'P:listSearchFields'{}.
 
 
--record(getReferencesResponse, {
-	return :: responseWrapper() | undefined}).
+-record('P:getReferencesResponse', {
+	return :: 'P:responseWrapper'() | undefined}).
 
--type getReferencesResponse() :: #getReferencesResponse{}.
+-type 'P:getReferencesResponse'() :: #'P:getReferencesResponse'{}.
 
 
--record(getReferences, {
+-record('P:getReferences', {
 	id :: string() | undefined,
 	source :: string() | undefined,
 	offSet :: integer() | undefined,
 	pageSize :: string() | undefined,
 	email :: string() | undefined}).
 
--type getReferences() :: #getReferences{}.
+-type 'P:getReferences'() :: #'P:getReferences'{}.
 
 
--record(getSupplementaryFilesResponse, {
-	return :: result() | undefined}).
+-record('P:getSupplementaryFilesResponse', {
+	return :: 'P:result'() | undefined}).
 
--type getSupplementaryFilesResponse() :: #getSupplementaryFilesResponse{}.
+-type 'P:getSupplementaryFilesResponse'() :: #'P:getSupplementaryFilesResponse'{}.
 
 
--record(getSupplementaryFiles, {
+-record('P:getSupplementaryFiles', {
 	id :: string() | undefined,
 	source :: string() | undefined,
 	email :: string() | undefined}).
 
--type getSupplementaryFiles() :: #getSupplementaryFiles{}.
+-type 'P:getSupplementaryFiles'() :: #'P:getSupplementaryFiles'{}.
 
 
--record(getDatabaseLinksResponse, {
-	return :: responseWrapper() | undefined}).
+-record('P:getDatabaseLinksResponse', {
+	return :: 'P:responseWrapper'() | undefined}).
 
--type getDatabaseLinksResponse() :: #getDatabaseLinksResponse{}.
+-type 'P:getDatabaseLinksResponse'() :: #'P:getDatabaseLinksResponse'{}.
 
 
--record(getDatabaseLinks, {
+-record('P:getDatabaseLinks', {
 	id :: string() | undefined,
 	source :: string() | undefined,
 	database :: string() | undefined,
@@ -121,59 +124,59 @@
 	pageSize :: string() | undefined,
 	email :: string() | undefined}).
 
--type getDatabaseLinks() :: #getDatabaseLinks{}.
+-type 'P:getDatabaseLinks'() :: #'P:getDatabaseLinks'{}.
 
 
--record(getBookXMLResponse, {
-	return :: result() | undefined}).
+-record('P:getBookXMLResponse', {
+	return :: 'P:result'() | undefined}).
 
--type getBookXMLResponse() :: #getBookXMLResponse{}.
+-type 'P:getBookXMLResponse'() :: #'P:getBookXMLResponse'{}.
 
 
--record(getBookXML, {
+-record('P:getBookXML', {
 	id :: string() | undefined,
 	source :: string() | undefined,
 	email :: string() | undefined}).
 
--type getBookXML() :: #getBookXML{}.
+-type 'P:getBookXML'() :: #'P:getBookXML'{}.
 
 
--record(profilePublicationsResponse, {
-	return :: responseWrapper() | undefined}).
+-record('P:profilePublicationsResponse', {
+	return :: 'P:responseWrapper'() | undefined}).
 
--type profilePublicationsResponse() :: #profilePublicationsResponse{}.
+-type 'P:profilePublicationsResponse'() :: #'P:profilePublicationsResponse'{}.
 
 
--record(profilePublications, {
+-record('P:profilePublications', {
 	queryString :: string() | undefined,
 	profileType :: string() | undefined,
 	synonym :: boolean() | undefined,
 	email :: string() | undefined}).
 
--type profilePublications() :: #profilePublications{}.
+-type 'P:profilePublications'() :: #'P:profilePublications'{}.
 
 
--record(getFulltextXMLResponse, {
-	return :: result() | undefined}).
+-record('P:getFulltextXMLResponse', {
+	return :: 'P:result'() | undefined}).
 
--type getFulltextXMLResponse() :: #getFulltextXMLResponse{}.
+-type 'P:getFulltextXMLResponse'() :: #'P:getFulltextXMLResponse'{}.
 
 
--record(getFulltextXML, {
+-record('P:getFulltextXML', {
 	id :: string() | undefined,
 	source :: string() | undefined,
 	email :: string() | undefined}).
 
--type getFulltextXML() :: #getFulltextXML{}.
+-type 'P:getFulltextXML'() :: #'P:getFulltextXML'{}.
 
 
--record(getLabsLinksResponse, {
-	return :: responseWrapper() | undefined}).
+-record('P:getLabsLinksResponse', {
+	return :: 'P:responseWrapper'() | undefined}).
 
--type getLabsLinksResponse() :: #getLabsLinksResponse{}.
+-type 'P:getLabsLinksResponse'() :: #'P:getLabsLinksResponse'{}.
 
 
--record(getLabsLinks, {
+-record('P:getLabsLinks', {
 	id :: string() | undefined,
 	source :: string() | undefined,
 	providerId :: string() | undefined,
@@ -181,32 +184,32 @@
 	pageSize :: string() | undefined,
 	email :: string() | undefined}).
 
--type getLabsLinks() :: #getLabsLinks{}.
+-type 'P:getLabsLinks'() :: #'P:getLabsLinks'{}.
 
 
--record(getCitationsResponse, {
-	return :: responseWrapper() | undefined}).
+-record('P:getCitationsResponse', {
+	return :: 'P:responseWrapper'() | undefined}).
 
--type getCitationsResponse() :: #getCitationsResponse{}.
+-type 'P:getCitationsResponse'() :: #'P:getCitationsResponse'{}.
 
 
--record(getCitations, {
+-record('P:getCitations', {
 	id :: string() | undefined,
 	source :: string() | undefined,
 	offSet :: integer() | undefined,
 	pageSize :: string() | undefined,
 	email :: string() | undefined}).
 
--type getCitations() :: #getCitations{}.
+-type 'P:getCitations'() :: #'P:getCitations'{}.
 
 
--record(getTextMinedTermsResponse, {
-	return :: responseWrapper() | undefined}).
+-record('P:getTextMinedTermsResponse', {
+	return :: 'P:responseWrapper'() | undefined}).
 
--type getTextMinedTermsResponse() :: #getTextMinedTermsResponse{}.
+-type 'P:getTextMinedTermsResponse'() :: #'P:getTextMinedTermsResponse'{}.
 
 
--record(getTextMinedTerms, {
+-record('P:getTextMinedTerms', {
 	id :: string() | undefined,
 	source :: string() | undefined,
 	semanticType :: string() | undefined,
@@ -214,114 +217,114 @@
 	pageSize :: string() | undefined,
 	email :: string() | undefined}).
 
--type getTextMinedTerms() :: #getTextMinedTerms{}.
+-type 'P:getTextMinedTerms'() :: #'P:getTextMinedTerms'{}.
 
 
--record('QueryException', {
+-record('P:QueryException', {
 	message :: string() | undefined}).
 
--type 'QueryException'() :: #'QueryException'{}.
+-type 'P:QueryException'() :: #'P:QueryException'{}.
 
 
--record(labsLinks, {
+-record('P:labsLinks', {
 	title :: string() | undefined,
 	url :: string() | undefined}).
 
--type labsLinks() :: #labsLinks{}.
+-type 'P:labsLinks'() :: #'P:labsLinks'{}.
 
 
--record(labsProvider, {
+-record('P:labsProvider', {
 	id :: integer() | undefined,
 	name :: string() | undefined,
 	description :: string() | undefined,
 	frontTab :: string() | undefined,
-	link :: [labsLinks() | {nil, labsLinks()}] | undefined}).
+	link :: ['P:labsLinks'() | {nil, 'P:labsLinks'()}] | undefined}).
 
--type labsProvider() :: #labsProvider{}.
-
-
--record(labsProviders, {
-	provider :: [labsProvider() | {nil, labsProvider()}] | undefined}).
-
--type labsProviders() :: #labsProviders{}.
+-type 'P:labsProvider'() :: #'P:labsProvider'{}.
 
 
--record(labsProviderCounts, {
+-record('P:labsProviders', {
+	provider :: ['P:labsProvider'() | {nil, 'P:labsProvider'()}] | undefined}).
+
+-type 'P:labsProviders'() :: #'P:labsProviders'{}.
+
+
+-record('P:labsProviderCounts', {
 	providerName :: string() | undefined,
 	linksCount :: integer() | undefined}).
 
--type labsProviderCounts() :: #labsProviderCounts{}.
+-type 'P:labsProviderCounts'() :: #'P:labsProviderCounts'{}.
 
 
--record(labsProviderCountList, {
-	provider :: [labsProviderCounts() | {nil, labsProviderCounts()}] | undefined}).
+-record('P:labsProviderCountList', {
+	provider :: ['P:labsProviderCounts'() | {nil, 'P:labsProviderCounts'()}] | undefined}).
 
--type labsProviderCountList() :: #labsProviderCountList{}.
+-type 'P:labsProviderCountList'() :: #'P:labsProviderCountList'{}.
 
 
--record('SearchTerm', {
+-record('P:SearchTerm', {
 	term :: string() | undefined,
 	dataSets :: [string() | nil] | undefined}).
 
--type 'SearchTerm'() :: #'SearchTerm'{}.
+-type 'P:SearchTerm'() :: #'P:SearchTerm'{}.
 
 
--record(searchTerms, {
-	searchTerms :: ['SearchTerm'() | {nil, 'SearchTerm'()}] | undefined}).
+-record('P:searchTerms', {
+	searchTerms :: ['P:SearchTerm'() | {nil, 'P:SearchTerm'()}] | undefined}).
 
--type searchTerms() :: #searchTerms{}.
+-type 'P:searchTerms'() :: #'P:searchTerms'{}.
 
 
--record(minedDbIDs, {
+-record('P:minedDbIDs', {
 	dbId :: [string() | nil] | undefined}).
 
--type minedDbIDs() :: #minedDbIDs{}.
+-type 'P:minedDbIDs'() :: #'P:minedDbIDs'{}.
 
 
--record(minedAltName, {
+-record('P:minedAltName', {
 	altName :: [string() | nil] | undefined}).
 
--type minedAltName() :: #minedAltName{}.
+-type 'P:minedAltName'() :: #'P:minedAltName'{}.
 
 
--record(minedSummary, {
+-record('P:minedSummary', {
 	term :: string() | undefined,
 	count :: integer(),
-	altNameList :: minedAltName() | undefined,
+	altNameList :: 'P:minedAltName'() | undefined,
 	dbName :: string() | undefined,
-	dbIdList :: minedDbIDs() | undefined}).
+	dbIdList :: 'P:minedDbIDs'() | undefined}).
 
--type minedSummary() :: #minedSummary{}.
+-type 'P:minedSummary'() :: #'P:minedSummary'{}.
 
 
--record(minedTerms, {
+-record('P:minedTerms', {
 	name :: string() | undefined,
 	total :: integer(),
-	tmSummary :: [minedSummary() | {nil, minedSummary()}] | undefined}).
+	tmSummary :: ['P:minedSummary'() | {nil, 'P:minedSummary'()}] | undefined}).
 
--type minedTerms() :: #minedTerms{}.
-
-
--record(minedTermsList, {
-	semanticType :: [minedTerms() | {nil, minedTerms()}] | undefined}).
-
--type minedTermsList() :: #minedTermsList{}.
+-type 'P:minedTerms'() :: #'P:minedTerms'{}.
 
 
--record(semanticCounts, {
+-record('P:minedTermsList', {
+	semanticType :: ['P:minedTerms'() | {nil, 'P:minedTerms'()}] | undefined}).
+
+-type 'P:minedTermsList'() :: #'P:minedTermsList'{}.
+
+
+-record('P:semanticCounts', {
 	name :: string() | undefined,
 	count :: integer() | undefined}).
 
--type semanticCounts() :: #semanticCounts{}.
+-type 'P:semanticCounts'() :: #'P:semanticCounts'{}.
 
 
--record(semanticTypeCounts, {
-	semanticType :: [semanticCounts() | {nil, semanticCounts()}] | undefined}).
+-record('P:semanticTypeCounts', {
+	semanticType :: ['P:semanticCounts'() | {nil, 'P:semanticCounts'()}] | undefined}).
 
--type semanticTypeCounts() :: #semanticTypeCounts{}.
+-type 'P:semanticTypeCounts'() :: #'P:semanticTypeCounts'{}.
 
 
--record(referenceInfo, {
+-record('P:referenceInfo', {
 	id :: string() | undefined,
 	source :: string() | undefined,
 	citationType :: string() | undefined,
@@ -348,16 +351,16 @@
 	citedOrder :: integer(),
 	match :: string() | undefined}).
 
--type referenceInfo() :: #referenceInfo{}.
+-type 'P:referenceInfo'() :: #'P:referenceInfo'{}.
 
 
--record(referencesList, {
-	reference :: [referenceInfo() | {nil, referenceInfo()}] | undefined}).
+-record('P:referencesList', {
+	reference :: ['P:referenceInfo'() | {nil, 'P:referenceInfo'()}] | undefined}).
 
--type referencesList() :: #referencesList{}.
+-type 'P:referencesList'() :: #'P:referencesList'{}.
 
 
--record('CitationData', {
+-record('P:CitationData', {
 	id :: string() | undefined,
 	source :: string() | undefined,
 	citationType :: string() | undefined,
@@ -372,252 +375,252 @@
 	citedByCount :: integer(),
 	text :: string() | undefined}).
 
--type 'CitationData'() :: #'CitationData'{}.
+-type 'P:CitationData'() :: #'P:CitationData'{}.
 
 
--record(citationList, {
-	citation :: ['CitationData'() | {nil, 'CitationData'()}] | undefined}).
+-record('P:citationList', {
+	citation :: ['P:CitationData'() | {nil, 'P:CitationData'()}] | undefined}).
 
--type citationList() :: #citationList{}.
+-type 'P:citationList'() :: #'P:citationList'{}.
 
 
--record(dbCrossReferenceInfo, {
+-record('P:dbCrossReferenceInfo', {
 	info1 :: string() | undefined,
 	info2 :: string() | undefined,
 	info3 :: string() | undefined,
 	info4 :: string() | undefined}).
 
--type dbCrossReferenceInfo() :: #dbCrossReferenceInfo{}.
+-type 'P:dbCrossReferenceInfo'() :: #'P:dbCrossReferenceInfo'{}.
 
 
--record(dbCrossReference, {
+-record('P:dbCrossReference', {
 	dbName :: string() | undefined,
 	dbCount :: integer(),
-	dbCrossReferenceInfo :: [dbCrossReferenceInfo() | {nil, dbCrossReferenceInfo()}] | undefined}).
+	dbCrossReferenceInfo :: ['P:dbCrossReferenceInfo'() | {nil, 'P:dbCrossReferenceInfo'()}] | undefined}).
 
--type dbCrossReference() :: #dbCrossReference{}.
-
-
--record(dbCrossReferenceList, {
-	dbCrossReference :: [dbCrossReference() | {nil, dbCrossReference()}] | undefined}).
-
--type dbCrossReferenceList() :: #dbCrossReferenceList{}.
+-type 'P:dbCrossReference'() :: #'P:dbCrossReference'{}.
 
 
--record(dbCounts, {
+-record('P:dbCrossReferenceList', {
+	dbCrossReference :: ['P:dbCrossReference'() | {nil, 'P:dbCrossReference'()}] | undefined}).
+
+-type 'P:dbCrossReferenceList'() :: #'P:dbCrossReferenceList'{}.
+
+
+-record('P:dbCounts', {
 	dbName :: string() | undefined,
 	count :: integer() | undefined}).
 
--type dbCounts() :: #dbCounts{}.
+-type 'P:dbCounts'() :: #'P:dbCounts'{}.
 
 
--record(dbCountList, {
-	db :: [dbCounts() | {nil, dbCounts()}] | undefined}).
+-record('P:dbCountList', {
+	db :: ['P:dbCounts'() | {nil, 'P:dbCounts'()}] | undefined}).
 
--type dbCountList() :: #dbCountList{}.
+-type 'P:dbCountList'() :: #'P:dbCountList'{}.
 
 
--record(tmAccessionTypeList, {
+-record('P:tmAccessionTypeList', {
 	accessionType :: [string() | nil] | undefined}).
 
--type tmAccessionTypeList() :: #tmAccessionTypeList{}.
+-type 'P:tmAccessionTypeList'() :: #'P:tmAccessionTypeList'{}.
 
 
--record(crossReferencesList, {
+-record('P:crossReferencesList', {
 	dbName :: [string() | nil] | undefined}).
 
--type crossReferencesList() :: #crossReferencesList{}.
+-type 'P:crossReferencesList'() :: #'P:crossReferencesList'{}.
 
 
--record(extComment, {
+-record('P:extComment', {
 	extCommentSource :: string() | undefined,
 	info1 :: string() | undefined,
 	info2 :: string() | undefined}).
 
--type extComment() :: #extComment{}.
+-type 'P:extComment'() :: #'P:extComment'{}.
 
 
--record(extCommentBean, {
-	extComment :: [extComment() | {nil, extComment()}] | undefined}).
+-record('P:extCommentBean', {
+	extComment :: ['P:extComment'() | {nil, 'P:extComment'()}] | undefined}).
 
--type extCommentBean() :: #extCommentBean{}.
+-type 'P:extCommentBean'() :: #'P:extCommentBean'{}.
 
 
--record(commentCorrection, {
+-record('P:commentCorrection', {
 	id :: string() | undefined,
 	source :: string() | undefined,
 	reference :: string() | undefined,
 	type :: string() | undefined,
 	note :: string() | undefined,
-	orderIn :: integer()}).
+	orderIn :: string()}).
 
--type commentCorrection() :: #commentCorrection{}.
-
-
--record(commentCorrectionList, {
-	commentCorrection :: [commentCorrection() | {nil, commentCorrection()}] | undefined}).
-
--type commentCorrectionList() :: #commentCorrectionList{}.
+-type 'P:commentCorrection'() :: #'P:commentCorrection'{}.
 
 
--record(fullTextURLInfo, {
+-record('P:commentCorrectionList', {
+	commentCorrection :: ['P:commentCorrection'() | {nil, 'P:commentCorrection'()}] | undefined}).
+
+-type 'P:commentCorrectionList'() :: #'P:commentCorrectionList'{}.
+
+
+-record('P:fullTextURLInfo', {
 	availability :: string() | undefined,
 	availabilityCode :: string() | undefined,
 	documentStyle :: string() | undefined,
 	site :: string() | undefined,
 	url :: string() | undefined}).
 
--type fullTextURLInfo() :: #fullTextURLInfo{}.
+-type 'P:fullTextURLInfo'() :: #'P:fullTextURLInfo'{}.
 
 
--record(fullTextUrlList, {
-	fullTextUrl :: [fullTextURLInfo() | {nil, fullTextURLInfo()}] | undefined}).
+-record('P:fullTextUrlList', {
+	fullTextUrl :: ['P:fullTextURLInfo'() | {nil, 'P:fullTextURLInfo'()}] | undefined}).
 
--type fullTextUrlList() :: #fullTextUrlList{}.
+-type 'P:fullTextUrlList'() :: #'P:fullTextUrlList'{}.
 
 
--record(subSet, {
+-record('P:subSet', {
 	code :: string() | undefined,
 	name :: string() | undefined}).
 
--type subSet() :: #subSet{}.
+-type 'P:subSet'() :: #'P:subSet'{}.
 
 
--record(subSetList, {
-	subset :: [subSet() | {nil, subSet()}] | undefined}).
+-record('P:subSetList', {
+	subset :: ['P:subSet'() | {nil, 'P:subSet'()}] | undefined}).
 
--type subSetList() :: #subSetList{}.
+-type 'P:subSetList'() :: #'P:subSetList'{}.
 
 
--record(chemicalInfo, {
+-record('P:chemicalInfo', {
 	name :: string() | undefined,
 	registryNumber :: string() | undefined}).
 
--type chemicalInfo() :: #chemicalInfo{}.
+-type 'P:chemicalInfo'() :: #'P:chemicalInfo'{}.
 
 
--record(chemicalList, {
-	chemical :: [chemicalInfo() | {nil, chemicalInfo()}] | undefined}).
+-record('P:chemicalList', {
+	chemical :: ['P:chemicalInfo'() | {nil, 'P:chemicalInfo'()}] | undefined}).
 
--type chemicalList() :: #chemicalList{}.
+-type 'P:chemicalList'() :: #'P:chemicalList'{}.
 
 
--record(keywordList, {
+-record('P:keywordList', {
 	keyword :: [string() | nil] | undefined}).
 
--type keywordList() :: #keywordList{}.
+-type 'P:keywordList'() :: #'P:keywordList'{}.
 
 
--record(meshQualifierInfo, {
+-record('P:meshQualifierInfo', {
 	abbreviation :: string() | undefined,
 	qualifierName :: string() | undefined,
 	majorTopic_YN :: string() | undefined}).
 
--type meshQualifierInfo() :: #meshQualifierInfo{}.
+-type 'P:meshQualifierInfo'() :: #'P:meshQualifierInfo'{}.
 
 
--record(meshQualifierList, {
-	meshQualifier :: [meshQualifierInfo() | {nil, meshQualifierInfo()}] | undefined}).
+-record('P:meshQualifierList', {
+	meshQualifier :: ['P:meshQualifierInfo'() | {nil, 'P:meshQualifierInfo'()}] | undefined}).
 
--type meshQualifierList() :: #meshQualifierList{}.
+-type 'P:meshQualifierList'() :: #'P:meshQualifierList'{}.
 
 
--record(meshHeadingInfo, {
+-record('P:meshHeadingInfo', {
 	majorTopic_YN :: string() | undefined,
 	descriptorName :: string() | undefined,
-	meshQualifierList :: meshQualifierList() | undefined}).
+	meshQualifierList :: 'P:meshQualifierList'() | undefined}).
 
--type meshHeadingInfo() :: #meshHeadingInfo{}.
-
-
--record(meshHeadingsList, {
-	meshHeading :: [meshHeadingInfo() | {nil, meshHeadingInfo()}] | undefined}).
-
--type meshHeadingsList() :: #meshHeadingsList{}.
+-type 'P:meshHeadingInfo'() :: #'P:meshHeadingInfo'{}.
 
 
--record(grantInfo, {
+-record('P:meshHeadingsList', {
+	meshHeading :: ['P:meshHeadingInfo'() | {nil, 'P:meshHeadingInfo'()}] | undefined}).
+
+-type 'P:meshHeadingsList'() :: #'P:meshHeadingsList'{}.
+
+
+-record('P:grantInfo', {
 	grantId :: string() | undefined,
 	agency :: string() | undefined,
 	acronym :: string() | undefined,
-	orderIn :: integer()}).
+	orderIn :: string()}).
 
--type grantInfo() :: #grantInfo{}.
-
-
--record(grantsList, {
-	grant :: [grantInfo() | {nil, grantInfo()}] | undefined}).
-
--type grantsList() :: #grantsList{}.
+-type 'P:grantInfo'() :: #'P:grantInfo'{}.
 
 
--record(patentFamilyData, {
+-record('P:grantsList', {
+	grant :: ['P:grantInfo'() | {nil, 'P:grantInfo'()}] | undefined}).
+
+-type 'P:grantsList'() :: #'P:grantsList'{}.
+
+
+-record('P:patentFamilyData', {
 	familyNumber :: string() | undefined,
-	orderIn :: integer() | undefined}).
+	orderIn :: string() | undefined}).
 
--type patentFamilyData() :: #patentFamilyData{}.
-
-
--record(patentFamilyList, {
-	family :: [patentFamilyData() | {nil, patentFamilyData()}] | undefined}).
-
--type patentFamilyList() :: #patentFamilyList{}.
+-type 'P:patentFamilyData'() :: #'P:patentFamilyData'{}.
 
 
--record(patentPriorityData, {
+-record('P:patentFamilyList', {
+	family :: ['P:patentFamilyData'() | {nil, 'P:patentFamilyData'()}] | undefined}).
+
+-type 'P:patentFamilyList'() :: #'P:patentFamilyList'{}.
+
+
+-record('P:patentPriorityData', {
 	priorityNumber :: string() | undefined,
 	priorityDate :: string() | undefined,
-	orderIn :: integer() | undefined}).
+	orderIn :: string() | undefined}).
 
--type patentPriorityData() :: #patentPriorityData{}.
-
-
--record(patentPriorityList, {
-	priority :: [patentPriorityData() | {nil, patentPriorityData()}] | undefined}).
-
--type patentPriorityList() :: #patentPriorityList{}.
+-type 'P:patentPriorityData'() :: #'P:patentPriorityData'{}.
 
 
--record(patentApplication, {
+-record('P:patentPriorityList', {
+	priority :: ['P:patentPriorityData'() | {nil, 'P:patentPriorityData'()}] | undefined}).
+
+-type 'P:patentPriorityList'() :: #'P:patentPriorityList'{}.
+
+
+-record('P:patentApplication', {
 	applicationNumber :: string() | undefined,
 	applicationDate :: string() | undefined,
-	orderIn :: integer() | undefined}).
+	orderIn :: string() | undefined}).
 
--type patentApplication() :: #patentApplication{}.
+-type 'P:patentApplication'() :: #'P:patentApplication'{}.
 
 
--record(patentClassifierInfo, {
+-record('P:patentClassifierInfo', {
 	classification :: string() | undefined,
 	classificationType :: string() | undefined,
 	hyperlink :: string() | undefined}).
 
--type patentClassifierInfo() :: #patentClassifierInfo{}.
+-type 'P:patentClassifierInfo'() :: #'P:patentClassifierInfo'{}.
 
 
--record(patentClassifierList, {
-	classifier :: [patentClassifierInfo() | {nil, patentClassifierInfo()}] | undefined}).
+-record('P:patentClassifierList', {
+	classifier :: ['P:patentClassifierInfo'() | {nil, 'P:patentClassifierInfo'()}] | undefined}).
 
--type patentClassifierList() :: #patentClassifierList{}.
+-type 'P:patentClassifierList'() :: #'P:patentClassifierList'{}.
 
 
--record(patentDetailsInfo, {
+-record('P:patentDetailsInfo', {
 	countryCode :: string() | undefined,
 	country :: string() | undefined,
 	typeCode :: string() | undefined,
 	typeDescription :: string() | undefined,
-	classifierList :: patentClassifierList() | undefined,
-	application :: patentApplication() | undefined,
-	priorityList :: patentPriorityList() | undefined,
-	familyList :: patentFamilyList() | undefined}).
+	classifierList :: 'P:patentClassifierList'() | undefined,
+	application :: 'P:patentApplication'() | undefined,
+	priorityList :: 'P:patentPriorityList'() | undefined,
+	familyList :: 'P:patentFamilyList'() | undefined}).
 
--type patentDetailsInfo() :: #patentDetailsInfo{}.
+-type 'P:patentDetailsInfo'() :: #'P:patentDetailsInfo'{}.
 
 
--record(bookOrReportDetails, {
+-record('P:bookOrReportDetails', {
 	publisher :: string() | undefined,
-	dayOfPublication :: integer() | undefined,
-	monthOfPublication :: integer() | undefined,
-	yearOfPublication :: integer() | undefined,
+	dayOfPublication :: string() | undefined,
+	monthOfPublication :: string() | undefined,
+	yearOfPublication :: string() | undefined,
 	numberOfPages :: string() | undefined,
 	edition :: string() | undefined,
 	isbn10 :: string() | undefined,
@@ -628,16 +631,16 @@
 	comprisingTitleNonAscii :: string() | undefined,
 	extraInformation :: string() | undefined}).
 
--type bookOrReportDetails() :: #bookOrReportDetails{}.
+-type 'P:bookOrReportDetails'() :: #'P:bookOrReportDetails'{}.
 
 
--record(pubTypeList, {
+-record('P:pubTypeList', {
 	pubType :: [string() | nil] | undefined}).
 
--type pubTypeList() :: #pubTypeList{}.
+-type 'P:pubTypeList'() :: #'P:pubTypeList'{}.
 
 
--record(journal, {
+-record('P:journal', {
 	title :: string() | undefined,
 	'ISOAbbreviation' :: string() | undefined,
 	medlineAbbreviation :: string() | undefined,
@@ -645,61 +648,61 @@
 	'ISSN' :: string() | undefined,
 	'ESSN' :: string() | undefined}).
 
--type journal() :: #journal{}.
+-type 'P:journal'() :: #'P:journal'{}.
 
 
--record(journalInfo, {
+-record('P:journalInfo', {
 	issue :: string() | undefined,
 	volume :: string() | undefined,
 	journalIssueId :: integer() | undefined,
 	dateOfPublication :: string() | undefined,
-	monthOfPublication :: integer() | undefined,
-	yearOfPublication :: integer() | undefined,
+	monthOfPublication :: string() | undefined,
+	yearOfPublication :: string() | undefined,
 	printPublicationDate :: string() | undefined,
-	journal :: journal() | undefined}).
+	journal :: 'P:journal'() | undefined}).
 
--type journalInfo() :: #journalInfo{}.
-
-
--record(authorIdsList, {
-	authorId :: [authorId() | {nil, authorId()}] | undefined}).
-
--type authorIdsList() :: #authorIdsList{}.
+-type 'P:journalInfo'() :: #'P:journalInfo'{}.
 
 
--record(investigatorList, {
-	investigator :: [authors() | {nil, authors()}] | undefined}).
+-record('P:authorIdsList', {
+	authorId :: ['P:authorId'() | {nil, 'P:authorId'()}] | undefined}).
 
--type investigatorList() :: #investigatorList{}.
+-type 'P:authorIdsList'() :: #'P:authorIdsList'{}.
 
 
--record(authorId, {
+-record('P:investigatorList', {
+	investigator :: ['P:authors'() | {nil, 'P:authors'()}] | undefined}).
+
+-type 'P:investigatorList'() :: #'P:investigatorList'{}.
+
+
+-record('P:authorId', {
 	type :: string() | undefined,
 	'#text' :: string() | undefined}).
 
--type authorId() :: #authorId{}.
+-type 'P:authorId'() :: #'P:authorId'{}.
 
 
--record(authors, {
+-record('P:authors', {
 	collectiveName :: string() | undefined,
 	fullName :: string() | undefined,
 	firstName :: string() | undefined,
 	lastName :: string() | undefined,
 	initials :: string() | undefined,
-	authorId :: authorId() | undefined,
+	authorId :: 'P:authorId'() | undefined,
 	affiliation :: string() | undefined}).
 
--type authors() :: #authors{}.
+-type 'P:authors'() :: #'P:authors'{}.
 
 
--record(authorsList, {
-	author :: [authors() | {nil, authors()}] | undefined}).
+-record('P:authorsList', {
+	author :: ['P:authors'() | {nil, 'P:authors'()}] | undefined}).
 
--type authorsList() :: #authorsList{}.
+-type 'P:authorsList'() :: #'P:authorsList'{}.
 
 
--record(result, {
-	request :: request() | undefined,
+-record('P:result', {
+	request :: 'P:request'() | undefined,
 	citationId :: integer() | undefined,
 	id :: string() | undefined,
 	source :: string() | undefined,
@@ -708,10 +711,10 @@
 	'DOI' :: string() | undefined,
 	title :: string() | undefined,
 	authorString :: string() | undefined,
-	authorList :: authorsList() | undefined,
-	investigatorList :: investigatorList() | undefined,
-	authorIdList :: authorIdsList() | undefined,
-	journalInfo :: journalInfo() | undefined,
+	authorList :: 'P:authorsList'() | undefined,
+	investigatorList :: 'P:investigatorList'() | undefined,
+	authorIdList :: 'P:authorIdsList'() | undefined,
+	journalInfo :: 'P:journalInfo'() | undefined,
 	journalTitle :: string() | undefined,
 	issue :: string() | undefined,
 	journalVolume :: string() | undefined,
@@ -723,18 +726,18 @@
 	language :: string() | undefined,
 	pubModel :: string() | undefined,
 	pubType :: string() | undefined,
-	pubTypeList :: pubTypeList() | undefined,
+	pubTypeList :: 'P:pubTypeList'() | undefined,
 	brSummary :: string() | undefined,
-	bookOrReportDetails :: bookOrReportDetails() | undefined,
-	patentDetails :: patentDetailsInfo() | undefined,
-	grantsList :: grantsList() | undefined,
-	meshHeadingList :: meshHeadingsList() | undefined,
-	keywordList :: keywordList() | undefined,
-	chemicalList :: chemicalList() | undefined,
-	subsetList :: subSetList() | undefined,
-	fullTextUrlList :: fullTextUrlList() | undefined,
-	commentCorrectionList :: commentCorrectionList() | undefined,
-	extCommentList :: extCommentBean() | undefined,
+	bookOrReportDetails :: 'P:bookOrReportDetails'() | undefined,
+	patentDetails :: 'P:patentDetailsInfo'() | undefined,
+	grantsList :: 'P:grantsList'() | undefined,
+	meshHeadingList :: 'P:meshHeadingsList'() | undefined,
+	keywordList :: 'P:keywordList'() | undefined,
+	chemicalList :: 'P:chemicalList'() | undefined,
+	subsetList :: 'P:subSetList'() | undefined,
+	fullTextUrlList :: 'P:fullTextUrlList'() | undefined,
+	commentCorrectionList :: 'P:commentCorrectionList'() | undefined,
+	extCommentList :: 'P:extCommentBean'() | undefined,
 	isOpenAccess :: string() | undefined,
 	inEPMC :: string() | undefined,
 	inPMC :: string() | undefined,
@@ -742,7 +745,7 @@
 	hasReferences :: string() | undefined,
 	hasTextMinedTerms :: string() | undefined,
 	hasDbCrossReferences :: string() | undefined,
-	dbCrossReferenceList :: crossReferencesList() | undefined,
+	dbCrossReferenceList :: 'P:crossReferencesList'() | undefined,
 	hasSupplementary :: string() | undefined,
 	hasFullTextXML :: string() | undefined,
 	hasPDF :: string() | undefined,
@@ -750,7 +753,7 @@
 	bookid :: string() | undefined,
 	hasLabsLinks :: string() | undefined,
 	hasTMAccessionNumbers :: string() | undefined,
-	tmAccessionTypeList :: tmAccessionTypeList() | undefined,
+	tmAccessionTypeList :: 'P:tmAccessionTypeList'() | undefined,
 	dateOfCompletion :: string() | undefined,
 	dateOfCreation :: string() | undefined,
 	dateOfRevision :: string() | undefined,
@@ -761,31 +764,31 @@
 	supplementaryFiles :: string() | undefined,
 	luceneScore :: string() | undefined}).
 
--type result() :: #result{}.
+-type 'P:result'() :: #'P:result'{}.
 
 
--record(resultList, {
-	result :: [result() | {nil, result()}] | undefined}).
+-record('P:resultList', {
+	result :: ['P:result'() | {nil, 'P:result'()}] | undefined}).
 
--type resultList() :: #resultList{}.
+-type 'P:resultList'() :: #'P:resultList'{}.
 
 
--record(profile, {
+-record('P:profile', {
 	name :: string() | undefined,
 	count :: integer()}).
 
--type profile() :: #profile{}.
+-type 'P:profile'() :: #'P:profile'{}.
 
 
--record(profileListBean, {
-	source :: [profile() | {nil, profile()}] | undefined,
-	pubType :: [profile() | {nil, profile()}] | undefined,
-	subset :: [profile() | {nil, profile()}] | undefined}).
+-record('P:profileListBean', {
+	source :: ['P:profile'() | {nil, 'P:profile'()}] | undefined,
+	pubType :: ['P:profile'() | {nil, 'P:profile'()}] | undefined,
+	subset :: ['P:profile'() | {nil, 'P:profile'()}] | undefined}).
 
--type profileListBean() :: #profileListBean{}.
+-type 'P:profileListBean'() :: #'P:profileListBean'{}.
 
 
--record(request, {
+-record('P:request', {
 	queryString :: string() | undefined,
 	internalQuery :: string() | undefined,
 	resultType :: string() | undefined,
@@ -800,35 +803,35 @@
 	email :: string() | undefined,
 	providerId :: string() | undefined}).
 
--type request() :: #request{}.
+-type 'P:request'() :: #'P:request'{}.
 
 
--record(responseWrapper, {
+-record('P:responseWrapper', {
 	version :: string() | undefined,
 	hitCount :: integer() | undefined,
-	request :: request() | undefined,
-	profileList :: profileListBean() | undefined,
-	resultList :: resultList() | undefined,
-	dbCountList :: dbCountList() | undefined,
-	dbCrossReferenceList :: dbCrossReferenceList() | undefined,
-	citationList :: citationList() | undefined,
-	referenceList :: referencesList() | undefined,
-	semanticTypeCountList :: semanticTypeCounts() | undefined,
-	semanticTypeList :: minedTermsList() | undefined,
-	searchTermList :: searchTerms() | undefined,
-	linksCountList :: labsProviderCountList() | undefined,
-	providers :: labsProviders() | undefined}).
+	request :: 'P:request'() | undefined,
+	profileList :: 'P:profileListBean'() | undefined,
+	resultList :: 'P:resultList'() | undefined,
+	dbCountList :: 'P:dbCountList'() | undefined,
+	dbCrossReferenceList :: 'P:dbCrossReferenceList'() | undefined,
+	citationList :: 'P:citationList'() | undefined,
+	referenceList :: 'P:referencesList'() | undefined,
+	semanticTypeCountList :: 'P:semanticTypeCounts'() | undefined,
+	semanticTypeList :: 'P:minedTermsList'() | undefined,
+	searchTermList :: 'P:searchTerms'() | undefined,
+	linksCountList :: 'P:labsProviderCountList'() | undefined,
+	providers :: 'P:labsProviders'() | undefined}).
 
--type responseWrapper() :: #responseWrapper{}.
-
-
--record(searchPublicationsResponse, {
-	return :: responseWrapper() | undefined}).
-
--type searchPublicationsResponse() :: #searchPublicationsResponse{}.
+-type 'P:responseWrapper'() :: #'P:responseWrapper'{}.
 
 
--record(searchPublications, {
+-record('P:searchPublicationsResponse', {
+	return :: 'P:responseWrapper'() | undefined}).
+
+-type 'P:searchPublicationsResponse'() :: #'P:searchPublicationsResponse'{}.
+
+
+-record('P:searchPublications', {
 	queryString :: string() | undefined,
 	resultType :: string() | undefined,
 	offSet :: integer() | undefined,
@@ -836,7 +839,7 @@
 	synonym :: boolean() | undefined,
 	email :: string() | undefined}).
 
--type searchPublications() :: #searchPublications{}.
+-type 'P:searchPublications'() :: #'P:searchPublications'{}.
 -define(INTERFACE, {interface,"WSCitationImplService",europepmc,'1.1',
                     soap_client_ibrowse,soap_server_cowboy_1,europepmc_server,
                     europepmc_client,[],"http://webservice.cdb.ebi.ac.uk/",
@@ -846,105 +849,111 @@
                     "WSCitationImplPort","WSCitationImplPortBinding",
                     "WSCitationImpl",
                     [{op,"searchPublications",searchPublications,[],
-                      undefined,request_response,searchPublications,
-                      searchPublicationsResponse,undefined},
+                      undefined,request_response,'P:searchPublications',
+                      'P:searchPublicationsResponse',undefined},
                      {op,"profilePublications",profilePublications,[],
-                      undefined,request_response,profilePublications,
-                      profilePublicationsResponse,undefined},
+                      undefined,request_response,'P:profilePublications',
+                      'P:profilePublicationsResponse',undefined},
                      {op,"getCitations",getCitations,[],undefined,
-                      request_response,getCitations,getCitationsResponse,
-                      undefined},
+                      request_response,'P:getCitations',
+                      'P:getCitationsResponse',undefined},
                      {op,"getReferences",getReferences,[],undefined,
-                      request_response,getReferences,getReferencesResponse,
-                      undefined},
+                      request_response,'P:getReferences',
+                      'P:getReferencesResponse',undefined},
                      {op,"getTextMinedTerms",getTextMinedTerms,[],undefined,
-                      request_response,getTextMinedTerms,
-                      getTextMinedTermsResponse,undefined},
+                      request_response,'P:getTextMinedTerms',
+                      'P:getTextMinedTermsResponse',undefined},
                      {op,"getDatabaseLinks",getDatabaseLinks,[],undefined,
-                      request_response,getDatabaseLinks,
-                      getDatabaseLinksResponse,undefined},
+                      request_response,'P:getDatabaseLinks',
+                      'P:getDatabaseLinksResponse',undefined},
                      {op,"getSupplementaryFiles",getSupplementaryFiles,[],
-                      undefined,request_response,getSupplementaryFiles,
-                      getSupplementaryFilesResponse,undefined},
+                      undefined,request_response,'P:getSupplementaryFiles',
+                      'P:getSupplementaryFilesResponse',undefined},
                      {op,"getFulltextXML",getFulltextXML,[],undefined,
-                      request_response,getFulltextXML,getFulltextXMLResponse,
-                      undefined},
+                      request_response,'P:getFulltextXML',
+                      'P:getFulltextXMLResponse',undefined},
                      {op,"getBookXML",getBookXML,[],undefined,
-                      request_response,getBookXML,getBookXMLResponse,
+                      request_response,'P:getBookXML','P:getBookXMLResponse',
                       undefined},
                      {op,"listSearchFields",listSearchFields,[],undefined,
-                      request_response,listSearchFields,
-                      listSearchFieldsResponse,undefined},
+                      request_response,'P:listSearchFields',
+                      'P:listSearchFieldsResponse',undefined},
                      {op,"getLabsLinks",getLabsLinks,[],undefined,
-                      request_response,getLabsLinks,getLabsLinksResponse,
-                      undefined}],
+                      request_response,'P:getLabsLinks',
+                      'P:getLabsLinksResponse',undefined}],
                     {model,
                      [{type,'_document',sequence,
                        [{el,
-                         [{alt,'QueryException','QueryException',[],1,1,true,
-                           undefined},
-                          {alt,getBookXML,getBookXML,[],1,1,true,undefined},
-                          {alt,getBookXMLResponse,getBookXMLResponse,[],1,1,
+                         [{alt,'P:QueryException','P:QueryException',[],1,1,
                            true,undefined},
-                          {alt,getCitations,getCitations,[],1,1,true,
+                          {alt,'P:getBookXML','P:getBookXML',[],1,1,true,
                            undefined},
-                          {alt,getCitationsResponse,getCitationsResponse,[],
+                          {alt,'P:getBookXMLResponse','P:getBookXMLResponse',
+                           [],1,1,true,undefined},
+                          {alt,'P:getCitations','P:getCitations',[],1,1,true,
+                           undefined},
+                          {alt,'P:getCitationsResponse',
+                           'P:getCitationsResponse',[],1,1,true,undefined},
+                          {alt,'P:getDatabaseLinks','P:getDatabaseLinks',[],
                            1,1,true,undefined},
-                          {alt,getDatabaseLinks,getDatabaseLinks,[],1,1,true,
+                          {alt,'P:getDatabaseLinksResponse',
+                           'P:getDatabaseLinksResponse',[],1,1,true,undefined},
+                          {alt,'P:getFulltextXML','P:getFulltextXML',[],1,1,
+                           true,undefined},
+                          {alt,'P:getFulltextXMLResponse',
+                           'P:getFulltextXMLResponse',[],1,1,true,undefined},
+                          {alt,'P:getLabsLinks','P:getLabsLinks',[],1,1,true,
                            undefined},
-                          {alt,getDatabaseLinksResponse,
-                           getDatabaseLinksResponse,[],1,1,true,undefined},
-                          {alt,getFulltextXML,getFulltextXML,[],1,1,true,
+                          {alt,'P:getLabsLinksResponse',
+                           'P:getLabsLinksResponse',[],1,1,true,undefined},
+                          {alt,'P:getReferences','P:getReferences',[],1,1,
+                           true,undefined},
+                          {alt,'P:getReferencesResponse',
+                           'P:getReferencesResponse',[],1,1,true,undefined},
+                          {alt,'P:getSupplementaryFiles',
+                           'P:getSupplementaryFiles',[],1,1,true,undefined},
+                          {alt,'P:getSupplementaryFilesResponse',
+                           'P:getSupplementaryFilesResponse',[],1,1,true,
                            undefined},
-                          {alt,getFulltextXMLResponse,getFulltextXMLResponse,
+                          {alt,'P:getTextMinedTerms','P:getTextMinedTerms',
                            [],1,1,true,undefined},
-                          {alt,getLabsLinks,getLabsLinks,[],1,1,true,
+                          {alt,'P:getTextMinedTermsResponse',
+                           'P:getTextMinedTermsResponse',[],1,1,true,
                            undefined},
-                          {alt,getLabsLinksResponse,getLabsLinksResponse,[],
+                          {alt,'P:listSearchFields','P:listSearchFields',[],
                            1,1,true,undefined},
-                          {alt,getReferences,getReferences,[],1,1,true,
+                          {alt,'P:listSearchFieldsResponse',
+                           'P:listSearchFieldsResponse',[],1,1,true,undefined},
+                          {alt,'P:profilePublications',
+                           'P:profilePublications',[],1,1,true,undefined},
+                          {alt,'P:profilePublicationsResponse',
+                           'P:profilePublicationsResponse',[],1,1,true,
                            undefined},
-                          {alt,getReferencesResponse,getReferencesResponse,
+                          {alt,'P:searchPublications','P:searchPublications',
                            [],1,1,true,undefined},
-                          {alt,getSupplementaryFiles,getSupplementaryFiles,
-                           [],1,1,true,undefined},
-                          {alt,getSupplementaryFilesResponse,
-                           getSupplementaryFilesResponse,[],1,1,true,
-                           undefined},
-                          {alt,getTextMinedTerms,getTextMinedTerms,[],1,1,
-                           true,undefined},
-                          {alt,getTextMinedTermsResponse,
-                           getTextMinedTermsResponse,[],1,1,true,undefined},
-                          {alt,listSearchFields,listSearchFields,[],1,1,true,
-                           undefined},
-                          {alt,listSearchFieldsResponse,
-                           listSearchFieldsResponse,[],1,1,true,undefined},
-                          {alt,profilePublications,profilePublications,[],1,
-                           1,true,undefined},
-                          {alt,profilePublicationsResponse,
-                           profilePublicationsResponse,[],1,1,true,undefined},
-                          {alt,searchPublications,searchPublications,[],1,1,
-                           true,undefined},
-                          {alt,searchPublicationsResponse,
-                           searchPublicationsResponse,[],1,1,true,undefined}],
+                          {alt,'P:searchPublicationsResponse',
+                           'P:searchPublicationsResponse',[],1,1,true,
+                           undefined}],
                          1,1,undefined,2}],
                        [],undefined,undefined,1,1,1,false,undefined},
-                      {type,listSearchFieldsResponse,sequence,
+                      {type,'P:listSearchFieldsResponse',sequence,
                        [{el,
-                         [{alt,return,responseWrapper,[],1,1,true,undefined}],
+                         [{alt,return,'P:responseWrapper',[],1,1,true,
+                           undefined}],
                          0,1,undefined,2}],
                        [],undefined,undefined,2,1,1,undefined,undefined},
-                      {type,listSearchFields,sequence,
+                      {type,'P:listSearchFields',sequence,
                        [{el,
                          [{alt,email,{'#PCDATA',char},[],1,1,true,undefined}],
                          0,1,undefined,2}],
                        [],undefined,undefined,2,1,1,undefined,undefined},
-                      {type,getReferencesResponse,sequence,
+                      {type,'P:getReferencesResponse',sequence,
                        [{el,
-                         [{alt,return,responseWrapper,[],1,1,true,undefined}],
+                         [{alt,return,'P:responseWrapper',[],1,1,true,
+                           undefined}],
                          0,1,undefined,2}],
                        [],undefined,undefined,2,1,1,undefined,undefined},
-                      {type,getReferences,sequence,
+                      {type,'P:getReferences',sequence,
                        [{el,
                          [{alt,id,{'#PCDATA',char},[],1,1,true,undefined}],
                          0,1,undefined,2},
@@ -953,7 +962,7 @@
                          0,1,undefined,3},
                         {el,
                          [{alt,offSet,
-                           {'#PCDATA',{integer,int}},
+                           {'#PCDATA',integer},
                            [],1,1,true,undefined}],
                          0,1,undefined,4},
                         {el,
@@ -965,12 +974,12 @@
                          [{alt,email,{'#PCDATA',char},[],1,1,true,undefined}],
                          0,1,undefined,6}],
                        [],undefined,undefined,6,1,1,undefined,undefined},
-                      {type,getSupplementaryFilesResponse,sequence,
+                      {type,'P:getSupplementaryFilesResponse',sequence,
                        [{el,
-                         [{alt,return,result,[],1,1,true,undefined}],
+                         [{alt,return,'P:result',[],1,1,true,undefined}],
                          0,1,undefined,2}],
                        [],undefined,undefined,2,1,1,undefined,undefined},
-                      {type,getSupplementaryFiles,sequence,
+                      {type,'P:getSupplementaryFiles',sequence,
                        [{el,
                          [{alt,id,{'#PCDATA',char},[],1,1,true,undefined}],
                          0,1,undefined,2},
@@ -981,12 +990,13 @@
                          [{alt,email,{'#PCDATA',char},[],1,1,true,undefined}],
                          0,1,undefined,4}],
                        [],undefined,undefined,4,1,1,undefined,undefined},
-                      {type,getDatabaseLinksResponse,sequence,
+                      {type,'P:getDatabaseLinksResponse',sequence,
                        [{el,
-                         [{alt,return,responseWrapper,[],1,1,true,undefined}],
+                         [{alt,return,'P:responseWrapper',[],1,1,true,
+                           undefined}],
                          0,1,undefined,2}],
                        [],undefined,undefined,2,1,1,undefined,undefined},
-                      {type,getDatabaseLinks,sequence,
+                      {type,'P:getDatabaseLinks',sequence,
                        [{el,
                          [{alt,id,{'#PCDATA',char},[],1,1,true,undefined}],
                          0,1,undefined,2},
@@ -1000,7 +1010,7 @@
                          0,1,undefined,4},
                         {el,
                          [{alt,offSet,
-                           {'#PCDATA',{integer,int}},
+                           {'#PCDATA',integer},
                            [],1,1,true,undefined}],
                          0,1,undefined,5},
                         {el,
@@ -1012,12 +1022,12 @@
                          [{alt,email,{'#PCDATA',char},[],1,1,true,undefined}],
                          0,1,undefined,7}],
                        [],undefined,undefined,7,1,1,undefined,undefined},
-                      {type,getBookXMLResponse,sequence,
+                      {type,'P:getBookXMLResponse',sequence,
                        [{el,
-                         [{alt,return,result,[],1,1,true,undefined}],
+                         [{alt,return,'P:result',[],1,1,true,undefined}],
                          0,1,undefined,2}],
                        [],undefined,undefined,2,1,1,undefined,undefined},
-                      {type,getBookXML,sequence,
+                      {type,'P:getBookXML',sequence,
                        [{el,
                          [{alt,id,{'#PCDATA',char},[],1,1,true,undefined}],
                          0,1,undefined,2},
@@ -1028,12 +1038,13 @@
                          [{alt,email,{'#PCDATA',char},[],1,1,true,undefined}],
                          0,1,undefined,4}],
                        [],undefined,undefined,4,1,1,undefined,undefined},
-                      {type,profilePublicationsResponse,sequence,
+                      {type,'P:profilePublicationsResponse',sequence,
                        [{el,
-                         [{alt,return,responseWrapper,[],1,1,true,undefined}],
+                         [{alt,return,'P:responseWrapper',[],1,1,true,
+                           undefined}],
                          0,1,undefined,2}],
                        [],undefined,undefined,2,1,1,undefined,undefined},
-                      {type,profilePublications,sequence,
+                      {type,'P:profilePublications',sequence,
                        [{el,
                          [{alt,queryString,
                            {'#PCDATA',char},
@@ -1053,12 +1064,12 @@
                          [{alt,email,{'#PCDATA',char},[],1,1,true,undefined}],
                          0,1,undefined,5}],
                        [],undefined,undefined,5,1,1,undefined,undefined},
-                      {type,getFulltextXMLResponse,sequence,
+                      {type,'P:getFulltextXMLResponse',sequence,
                        [{el,
-                         [{alt,return,result,[],1,1,true,undefined}],
+                         [{alt,return,'P:result',[],1,1,true,undefined}],
                          0,1,undefined,2}],
                        [],undefined,undefined,2,1,1,undefined,undefined},
-                      {type,getFulltextXML,sequence,
+                      {type,'P:getFulltextXML',sequence,
                        [{el,
                          [{alt,id,{'#PCDATA',char},[],1,1,true,undefined}],
                          0,1,undefined,2},
@@ -1069,12 +1080,13 @@
                          [{alt,email,{'#PCDATA',char},[],1,1,true,undefined}],
                          0,1,undefined,4}],
                        [],undefined,undefined,4,1,1,undefined,undefined},
-                      {type,getLabsLinksResponse,sequence,
+                      {type,'P:getLabsLinksResponse',sequence,
                        [{el,
-                         [{alt,return,responseWrapper,[],1,1,true,undefined}],
+                         [{alt,return,'P:responseWrapper',[],1,1,true,
+                           undefined}],
                          0,1,undefined,2}],
                        [],undefined,undefined,2,1,1,undefined,undefined},
-                      {type,getLabsLinks,sequence,
+                      {type,'P:getLabsLinks',sequence,
                        [{el,
                          [{alt,id,{'#PCDATA',char},[],1,1,true,undefined}],
                          0,1,undefined,2},
@@ -1088,7 +1100,7 @@
                          0,1,undefined,4},
                         {el,
                          [{alt,offSet,
-                           {'#PCDATA',{integer,int}},
+                           {'#PCDATA',integer},
                            [],1,1,true,undefined}],
                          0,1,undefined,5},
                         {el,
@@ -1100,12 +1112,13 @@
                          [{alt,email,{'#PCDATA',char},[],1,1,true,undefined}],
                          0,1,undefined,7}],
                        [],undefined,undefined,7,1,1,undefined,undefined},
-                      {type,getCitationsResponse,sequence,
+                      {type,'P:getCitationsResponse',sequence,
                        [{el,
-                         [{alt,return,responseWrapper,[],1,1,true,undefined}],
+                         [{alt,return,'P:responseWrapper',[],1,1,true,
+                           undefined}],
                          0,1,undefined,2}],
                        [],undefined,undefined,2,1,1,undefined,undefined},
-                      {type,getCitations,sequence,
+                      {type,'P:getCitations',sequence,
                        [{el,
                          [{alt,id,{'#PCDATA',char},[],1,1,true,undefined}],
                          0,1,undefined,2},
@@ -1114,7 +1127,7 @@
                          0,1,undefined,3},
                         {el,
                          [{alt,offSet,
-                           {'#PCDATA',{integer,int}},
+                           {'#PCDATA',integer},
                            [],1,1,true,undefined}],
                          0,1,undefined,4},
                         {el,
@@ -1126,12 +1139,13 @@
                          [{alt,email,{'#PCDATA',char},[],1,1,true,undefined}],
                          0,1,undefined,6}],
                        [],undefined,undefined,6,1,1,undefined,undefined},
-                      {type,getTextMinedTermsResponse,sequence,
+                      {type,'P:getTextMinedTermsResponse',sequence,
                        [{el,
-                         [{alt,return,responseWrapper,[],1,1,true,undefined}],
+                         [{alt,return,'P:responseWrapper',[],1,1,true,
+                           undefined}],
                          0,1,undefined,2}],
                        [],undefined,undefined,2,1,1,undefined,undefined},
-                      {type,getTextMinedTerms,sequence,
+                      {type,'P:getTextMinedTerms',sequence,
                        [{el,
                          [{alt,id,{'#PCDATA',char},[],1,1,true,undefined}],
                          0,1,undefined,2},
@@ -1145,7 +1159,7 @@
                          0,1,undefined,4},
                         {el,
                          [{alt,offSet,
-                           {'#PCDATA',{integer,int}},
+                           {'#PCDATA',integer},
                            [],1,1,true,undefined}],
                          0,1,undefined,5},
                         {el,
@@ -1157,14 +1171,14 @@
                          [{alt,email,{'#PCDATA',char},[],1,1,true,undefined}],
                          0,1,undefined,7}],
                        [],undefined,undefined,7,1,1,undefined,undefined},
-                      {type,'QueryException',sequence,
+                      {type,'P:QueryException',sequence,
                        [{el,
                          [{alt,message,
                            {'#PCDATA',char},
                            [],1,1,true,undefined}],
                          0,1,undefined,2}],
                        [],undefined,undefined,2,1,1,undefined,undefined},
-                      {type,labsLinks,sequence,
+                      {type,'P:labsLinks',sequence,
                        [{el,
                          [{alt,title,{'#PCDATA',char},[],1,1,true,undefined}],
                          0,1,undefined,2},
@@ -1172,11 +1186,9 @@
                          [{alt,url,{'#PCDATA',char},[],1,1,true,undefined}],
                          0,1,undefined,3}],
                        [],undefined,undefined,3,1,1,undefined,undefined},
-                      {type,labsProvider,sequence,
+                      {type,'P:labsProvider',sequence,
                        [{el,
-                         [{alt,id,
-                           {'#PCDATA',{integer,int}},
-                           [],1,1,true,undefined}],
+                         [{alt,id,{'#PCDATA',integer},[],1,1,true,undefined}],
                          0,1,undefined,2},
                         {el,
                          [{alt,name,{'#PCDATA',char},[],1,1,true,undefined}],
@@ -1192,15 +1204,16 @@
                            [],1,1,true,undefined}],
                          0,1,undefined,5},
                         {el,
-                         [{alt,link,labsLinks,[],1,1,true,undefined}],
+                         [{alt,link,'P:labsLinks',[],1,1,true,undefined}],
                          0,unbound,true,6}],
                        [],undefined,undefined,6,1,1,undefined,undefined},
-                      {type,labsProviders,sequence,
+                      {type,'P:labsProviders',sequence,
                        [{el,
-                         [{alt,provider,labsProvider,[],1,1,true,undefined}],
+                         [{alt,provider,'P:labsProvider',[],1,1,true,
+                           undefined}],
                          0,unbound,true,2}],
                        [],undefined,undefined,2,1,1,undefined,undefined},
-                      {type,labsProviderCounts,sequence,
+                      {type,'P:labsProviderCounts',sequence,
                        [{el,
                          [{alt,providerName,
                            {'#PCDATA',char},
@@ -1208,17 +1221,17 @@
                          0,1,undefined,2},
                         {el,
                          [{alt,linksCount,
-                           {'#PCDATA',{integer,int}},
+                           {'#PCDATA',integer},
                            [],1,1,true,undefined}],
                          0,1,undefined,3}],
                        [],undefined,undefined,3,1,1,undefined,undefined},
-                      {type,labsProviderCountList,sequence,
+                      {type,'P:labsProviderCountList',sequence,
                        [{el,
-                         [{alt,provider,labsProviderCounts,[],1,1,true,
+                         [{alt,provider,'P:labsProviderCounts',[],1,1,true,
                            undefined}],
                          0,unbound,true,2}],
                        [],undefined,undefined,2,1,1,undefined,undefined},
-                      {type,'SearchTerm',sequence,
+                      {type,'P:SearchTerm',sequence,
                        [{el,
                          [{alt,term,{'#PCDATA',char},[],1,1,true,undefined}],
                          0,1,undefined,2},
@@ -1228,79 +1241,81 @@
                            [],1,1,true,undefined}],
                          0,unbound,true,3}],
                        [],undefined,undefined,3,1,1,undefined,undefined},
-                      {type,searchTerms,sequence,
+                      {type,'P:searchTerms',sequence,
                        [{el,
-                         [{alt,searchTerms,'SearchTerm',[],1,1,true,
+                         [{alt,searchTerms,'P:SearchTerm',[],1,1,true,
                            undefined}],
                          0,unbound,true,2}],
                        [],undefined,undefined,2,1,1,undefined,undefined},
-                      {type,minedDbIDs,sequence,
+                      {type,'P:minedDbIDs',sequence,
                        [{el,
                          [{alt,dbId,{'#PCDATA',char},[],1,1,true,undefined}],
                          0,unbound,true,2}],
                        [],undefined,undefined,2,1,1,undefined,undefined},
-                      {type,minedAltName,sequence,
+                      {type,'P:minedAltName',sequence,
                        [{el,
                          [{alt,altName,
                            {'#PCDATA',char},
                            [],1,1,true,undefined}],
                          0,unbound,true,2}],
                        [],undefined,undefined,2,1,1,undefined,undefined},
-                      {type,minedSummary,sequence,
+                      {type,'P:minedSummary',sequence,
                        [{el,
                          [{alt,term,{'#PCDATA',char},[],1,1,true,undefined}],
                          0,1,undefined,2},
                         {el,
                          [{alt,count,
-                           {'#PCDATA',{integer,int}},
+                           {'#PCDATA',integer},
                            [],1,1,true,undefined}],
                          1,1,undefined,3},
                         {el,
-                         [{alt,altNameList,minedAltName,[],1,1,true,
+                         [{alt,altNameList,'P:minedAltName',[],1,1,true,
                            undefined}],
                          0,1,undefined,4},
                         {el,
                          [{alt,dbName,{'#PCDATA',char},[],1,1,true,undefined}],
                          0,1,undefined,5},
                         {el,
-                         [{alt,dbIdList,minedDbIDs,[],1,1,true,undefined}],
+                         [{alt,dbIdList,'P:minedDbIDs',[],1,1,true,undefined}],
                          0,1,undefined,6}],
                        [],undefined,undefined,6,1,1,undefined,undefined},
-                      {type,minedTerms,sequence,
+                      {type,'P:minedTerms',sequence,
                        [{el,
                          [{alt,name,{'#PCDATA',char},[],1,1,true,undefined}],
                          0,1,undefined,2},
                         {el,
                          [{alt,total,
-                           {'#PCDATA',{integer,int}},
+                           {'#PCDATA',integer},
                            [],1,1,true,undefined}],
                          1,1,undefined,3},
                         {el,
-                         [{alt,tmSummary,minedSummary,[],1,1,true,undefined}],
+                         [{alt,tmSummary,'P:minedSummary',[],1,1,true,
+                           undefined}],
                          0,unbound,true,4}],
                        [],undefined,undefined,4,1,1,undefined,undefined},
-                      {type,minedTermsList,sequence,
+                      {type,'P:minedTermsList',sequence,
                        [{el,
-                         [{alt,semanticType,minedTerms,[],1,1,true,undefined}],
+                         [{alt,semanticType,'P:minedTerms',[],1,1,true,
+                           undefined}],
                          0,unbound,true,2}],
                        [],undefined,undefined,2,1,1,undefined,undefined},
-                      {type,semanticCounts,sequence,
+                      {type,'P:semanticCounts',sequence,
                        [{el,
                          [{alt,name,{'#PCDATA',char},[],1,1,true,undefined}],
                          0,1,undefined,2},
                         {el,
                          [{alt,count,
-                           {'#PCDATA',{integer,int}},
+                           {'#PCDATA',integer},
                            [],1,1,true,undefined}],
                          0,1,undefined,3}],
                        [],undefined,undefined,3,1,1,undefined,undefined},
-                      {type,semanticTypeCounts,sequence,
+                      {type,'P:semanticTypeCounts',sequence,
                        [{el,
-                         [{alt,semanticType,semanticCounts,[],1,1,true,
+                         [{alt,semanticType,'P:semanticCounts',[],1,1,true,
                            undefined}],
                          0,unbound,true,2}],
                        [],undefined,undefined,2,1,1,undefined,undefined},
-                      {type,referenceInfo,sequence,
+                      {type,'P:referenceInfo',sequence,
                        [{el,
                          [{alt,id,{'#PCDATA',char},[],1,1,true,undefined}],
                          0,1,undefined,2},
@@ -1330,7 +1345,7 @@
                          0,1,undefined,8},
                         {el,
                          [{alt,pubYear,
-                           {'#PCDATA',{integer,int}},
+                           {'#PCDATA',integer},
                            [],1,1,true,undefined}],
                          1,1,undefined,9},
                         {el,
@@ -1400,19 +1415,20 @@
                          0,1,undefined,24},
                         {el,
                          [{alt,citedOrder,
-                           {'#PCDATA',{integer,int}},
+                           {'#PCDATA',integer},
                            [],1,1,true,undefined}],
                          1,1,undefined,25},
                         {el,
                          [{alt,match,{'#PCDATA',char},[],1,1,true,undefined}],
                          0,1,undefined,26}],
                        [],undefined,undefined,26,1,1,undefined,undefined},
-                      {type,referencesList,sequence,
+                      {type,'P:referencesList',sequence,
                        [{el,
-                         [{alt,reference,referenceInfo,[],1,1,true,undefined}],
+                         [{alt,reference,'P:referenceInfo',[],1,1,true,
+                           undefined}],
                          0,unbound,true,2}],
                        [],undefined,undefined,2,1,1,undefined,undefined},
-                      {type,'CitationData',sequence,
+                      {type,'P:CitationData',sequence,
                        [{el,
                          [{alt,id,{'#PCDATA',char},[],1,1,true,undefined}],
                          0,1,undefined,2},
@@ -1439,7 +1455,7 @@
                          0,1,undefined,7},
                         {el,
                          [{alt,pubYear,
-                           {'#PCDATA',{integer,int}},
+                           {'#PCDATA',integer},
                            [],1,1,true,undefined}],
                          1,1,undefined,8},
                         {el,
@@ -1458,19 +1474,20 @@
                          0,1,undefined,12},
                         {el,
                          [{alt,citedByCount,
-                           {'#PCDATA',{integer,int}},
+                           {'#PCDATA',integer},
                            [],1,1,true,undefined}],
                          1,1,undefined,13},
                         {el,
                          [{alt,text,{'#PCDATA',char},[],1,1,true,undefined}],
                          0,1,undefined,14}],
                        [],undefined,undefined,14,1,1,undefined,undefined},
-                      {type,citationList,sequence,
+                      {type,'P:citationList',sequence,
                        [{el,
-                         [{alt,citation,'CitationData',[],1,1,true,undefined}],
+                         [{alt,citation,'P:CitationData',[],1,1,true,
+                           undefined}],
                          0,unbound,true,2}],
                        [],undefined,undefined,2,1,1,undefined,undefined},
-                      {type,dbCrossReferenceInfo,sequence,
+                      {type,'P:dbCrossReferenceInfo',sequence,
                        [{el,
                          [{alt,info1,{'#PCDATA',char},[],1,1,true,undefined}],
                          0,1,undefined,2},
@@ -1484,54 +1501,54 @@
                          [{alt,info4,{'#PCDATA',char},[],1,1,true,undefined}],
                          0,1,undefined,5}],
                        [],undefined,undefined,5,1,1,undefined,undefined},
-                      {type,dbCrossReference,sequence,
+                      {type,'P:dbCrossReference',sequence,
                        [{el,
                          [{alt,dbName,{'#PCDATA',char},[],1,1,true,undefined}],
                          0,1,undefined,2},
                         {el,
                          [{alt,dbCount,
-                           {'#PCDATA',{integer,int}},
+                           {'#PCDATA',integer},
                            [],1,1,true,undefined}],
                          1,1,undefined,3},
                         {el,
-                         [{alt,dbCrossReferenceInfo,dbCrossReferenceInfo,[],
-                           1,1,true,undefined}],
+                         [{alt,dbCrossReferenceInfo,'P:dbCrossReferenceInfo',
+                           [],1,1,true,undefined}],
                          0,unbound,true,4}],
                        [],undefined,undefined,4,1,1,undefined,undefined},
-                      {type,dbCrossReferenceList,sequence,
+                      {type,'P:dbCrossReferenceList',sequence,
                        [{el,
-                         [{alt,dbCrossReference,dbCrossReference,[],1,1,true,
-                           undefined}],
+                         [{alt,dbCrossReference,'P:dbCrossReference',[],1,1,
+                           true,undefined}],
                          0,unbound,true,2}],
                        [],undefined,undefined,2,1,1,undefined,undefined},
-                      {type,dbCounts,sequence,
+                      {type,'P:dbCounts',sequence,
                        [{el,
                          [{alt,dbName,{'#PCDATA',char},[],1,1,true,undefined}],
                          0,1,undefined,2},
                         {el,
                          [{alt,count,
-                           {'#PCDATA',{integer,int}},
+                           {'#PCDATA',integer},
                            [],1,1,true,undefined}],
                          0,1,undefined,3}],
                        [],undefined,undefined,3,1,1,undefined,undefined},
-                      {type,dbCountList,sequence,
+                      {type,'P:dbCountList',sequence,
                        [{el,
-                         [{alt,db,dbCounts,[],1,1,true,undefined}],
+                         [{alt,db,'P:dbCounts',[],1,1,true,undefined}],
                          0,unbound,true,2}],
                        [],undefined,undefined,2,1,1,undefined,undefined},
-                      {type,tmAccessionTypeList,sequence,
+                      {type,'P:tmAccessionTypeList',sequence,
                        [{el,
                          [{alt,accessionType,
                            {'#PCDATA',char},
                            [],1,1,true,undefined}],
                          0,unbound,true,2}],
                        [],undefined,undefined,2,1,1,undefined,undefined},
-                      {type,crossReferencesList,sequence,
+                      {type,'P:crossReferencesList',sequence,
                        [{el,
                          [{alt,dbName,{'#PCDATA',char},[],1,1,true,undefined}],
                          0,unbound,true,2}],
                        [],undefined,undefined,2,1,1,undefined,undefined},
-                      {type,extComment,sequence,
+                      {type,'P:extComment',sequence,
                        [{el,
                          [{alt,extCommentSource,
                            {'#PCDATA',char},
@@ -1544,12 +1561,13 @@
                          [{alt,info2,{'#PCDATA',char},[],1,1,true,undefined}],
                          0,1,undefined,4}],
                        [],undefined,undefined,4,1,1,undefined,undefined},
-                      {type,extCommentBean,sequence,
+                      {type,'P:extCommentBean',sequence,
                        [{el,
-                         [{alt,extComment,extComment,[],1,1,true,undefined}],
+                         [{alt,extComment,'P:extComment',[],1,1,true,
+                           undefined}],
                          0,unbound,true,2}],
                        [],undefined,undefined,2,1,1,undefined,undefined},
-                      {type,commentCorrection,sequence,
+                      {type,'P:commentCorrection',sequence,
                        [{el,
                          [{alt,id,{'#PCDATA',char},[],1,1,true,undefined}],
                          0,1,undefined,2},
@@ -1569,17 +1587,17 @@
                          0,1,undefined,6},
                         {el,
                          [{alt,orderIn,
-                           {'#PCDATA',{integer,short}},
+                           {'#PCDATA',char},
                            [],1,1,true,undefined}],
                          1,1,undefined,7}],
                        [],undefined,undefined,7,1,1,undefined,undefined},
-                      {type,commentCorrectionList,sequence,
+                      {type,'P:commentCorrectionList',sequence,
                        [{el,
-                         [{alt,commentCorrection,commentCorrection,[],1,1,
-                           true,undefined}],
+                         [{alt,commentCorrection,'P:commentCorrection',[],1,
+                           1,true,undefined}],
                          0,unbound,true,2}],
                        [],undefined,undefined,2,1,1,undefined,undefined},
-                      {type,fullTextURLInfo,sequence,
+                      {type,'P:fullTextURLInfo',sequence,
                        [{el,
                          [{alt,availability,
                            {'#PCDATA',char},
@@ -1602,13 +1620,13 @@
                          [{alt,url,{'#PCDATA',char},[],1,1,true,undefined}],
                          0,1,undefined,6}],
                        [],undefined,undefined,6,1,1,undefined,undefined},
-                      {type,fullTextUrlList,sequence,
+                      {type,'P:fullTextUrlList',sequence,
                        [{el,
-                         [{alt,fullTextUrl,fullTextURLInfo,[],1,1,true,
+                         [{alt,fullTextUrl,'P:fullTextURLInfo',[],1,1,true,
                            undefined}],
                          0,unbound,true,2}],
                        [],undefined,undefined,2,1,1,undefined,undefined},
-                      {type,subSet,sequence,
+                      {type,'P:subSet',sequence,
                        [{el,
                          [{alt,code,{'#PCDATA',char},[],1,1,true,undefined}],
                          0,1,undefined,2},
@@ -1616,12 +1634,12 @@
                          [{alt,name,{'#PCDATA',char},[],1,1,true,undefined}],
                          0,1,undefined,3}],
                        [],undefined,undefined,3,1,1,undefined,undefined},
-                      {type,subSetList,sequence,
+                      {type,'P:subSetList',sequence,
                        [{el,
-                         [{alt,subset,subSet,[],1,1,true,undefined}],
+                         [{alt,subset,'P:subSet',[],1,1,true,undefined}],
                          0,unbound,true,2}],
                        [],undefined,undefined,2,1,1,undefined,undefined},
-                      {type,chemicalInfo,sequence,
+                      {type,'P:chemicalInfo',sequence,
                        [{el,
                          [{alt,name,{'#PCDATA',char},[],1,1,true,undefined}],
                          0,1,undefined,2},
@@ -1631,19 +1649,20 @@
                            [],1,1,true,undefined}],
                          0,1,undefined,3}],
                        [],undefined,undefined,3,1,1,undefined,undefined},
-                      {type,chemicalList,sequence,
+                      {type,'P:chemicalList',sequence,
                        [{el,
-                         [{alt,chemical,chemicalInfo,[],1,1,true,undefined}],
+                         [{alt,chemical,'P:chemicalInfo',[],1,1,true,
+                           undefined}],
                          0,unbound,true,2}],
                        [],undefined,undefined,2,1,1,undefined,undefined},
-                      {type,keywordList,sequence,
+                      {type,'P:keywordList',sequence,
                        [{el,
                          [{alt,keyword,
                            {'#PCDATA',char},
                            [],1,1,true,undefined}],
                          0,unbound,true,2}],
                        [],undefined,undefined,2,1,1,undefined,undefined},
-                      {type,meshQualifierInfo,sequence,
+                      {type,'P:meshQualifierInfo',sequence,
                        [{el,
                          [{alt,abbreviation,
                            {'#PCDATA',char},
@@ -1660,13 +1679,13 @@
                            [],1,1,true,undefined}],
                          0,1,undefined,4}],
                        [],undefined,undefined,4,1,1,undefined,undefined},
-                      {type,meshQualifierList,sequence,
+                      {type,'P:meshQualifierList',sequence,
                        [{el,
-                         [{alt,meshQualifier,meshQualifierInfo,[],1,1,true,
-                           undefined}],
+                         [{alt,meshQualifier,'P:meshQualifierInfo',[],1,1,
+                           true,undefined}],
                          0,unbound,true,2}],
                        [],undefined,undefined,2,1,1,undefined,undefined},
-                      {type,meshHeadingInfo,sequence,
+                      {type,'P:meshHeadingInfo',sequence,
                        [{el,
                          [{alt,majorTopic_YN,
                            {'#PCDATA',char},
@@ -1678,17 +1697,17 @@
                            [],1,1,true,undefined}],
                          0,1,undefined,3},
                         {el,
-                         [{alt,meshQualifierList,meshQualifierList,[],1,1,
-                           true,undefined}],
+                         [{alt,meshQualifierList,'P:meshQualifierList',[],1,
+                           1,true,undefined}],
                          0,1,undefined,4}],
                        [],undefined,undefined,4,1,1,undefined,undefined},
-                      {type,meshHeadingsList,sequence,
+                      {type,'P:meshHeadingsList',sequence,
                        [{el,
-                         [{alt,meshHeading,meshHeadingInfo,[],1,1,true,
+                         [{alt,meshHeading,'P:meshHeadingInfo',[],1,1,true,
                            undefined}],
                          0,unbound,true,2}],
                        [],undefined,undefined,2,1,1,undefined,undefined},
-                      {type,grantInfo,sequence,
+                      {type,'P:grantInfo',sequence,
                        [{el,
                          [{alt,grantId,
                            {'#PCDATA',char},
@@ -1704,16 +1723,16 @@
                          0,1,undefined,4},
                         {el,
                          [{alt,orderIn,
-                           {'#PCDATA',{integer,short}},
+                           {'#PCDATA',char},
                            [],1,1,true,undefined}],
                          1,1,undefined,5}],
                        [],undefined,undefined,5,1,1,undefined,undefined},
-                      {type,grantsList,sequence,
+                      {type,'P:grantsList',sequence,
                        [{el,
-                         [{alt,grant,grantInfo,[],1,1,true,undefined}],
+                         [{alt,grant,'P:grantInfo',[],1,1,true,undefined}],
                          0,unbound,true,2}],
                        [],undefined,undefined,2,1,1,undefined,undefined},
-                      {type,patentFamilyData,sequence,
+                      {type,'P:patentFamilyData',sequence,
                        [{el,
                          [{alt,familyNumber,
                            {'#PCDATA',char},
@@ -1721,16 +1740,17 @@
                          0,1,undefined,2},
                         {el,
                          [{alt,orderIn,
-                           {'#PCDATA',{integer,short}},
+                           {'#PCDATA',char},
                            [],1,1,true,undefined}],
                          0,1,undefined,3}],
                        [],undefined,undefined,3,1,1,undefined,undefined},
-                      {type,patentFamilyList,sequence,
+                      {type,'P:patentFamilyList',sequence,
                        [{el,
-                         [{alt,family,patentFamilyData,[],1,1,true,undefined}],
+                         [{alt,family,'P:patentFamilyData',[],1,1,true,
+                           undefined}],
                          0,unbound,true,2}],
                        [],undefined,undefined,2,1,1,undefined,undefined},
-                      {type,patentPriorityData,sequence,
+                      {type,'P:patentPriorityData',sequence,
                        [{el,
                          [{alt,priorityNumber,
                            {'#PCDATA',char},
@@ -1743,17 +1763,17 @@
                          0,1,undefined,3},
                         {el,
                          [{alt,orderIn,
-                           {'#PCDATA',{integer,short}},
+                           {'#PCDATA',char},
                            [],1,1,true,undefined}],
                          0,1,undefined,4}],
                        [],undefined,undefined,4,1,1,undefined,undefined},
-                      {type,patentPriorityList,sequence,
+                      {type,'P:patentPriorityList',sequence,
                        [{el,
-                         [{alt,priority,patentPriorityData,[],1,1,true,
+                         [{alt,priority,'P:patentPriorityData',[],1,1,true,
                            undefined}],
                          0,unbound,true,2}],
                        [],undefined,undefined,2,1,1,undefined,undefined},
-                      {type,patentApplication,sequence,
+                      {type,'P:patentApplication',sequence,
                        [{el,
                          [{alt,applicationNumber,
                            {'#PCDATA',char},
@@ -1766,11 +1786,11 @@
                          0,1,undefined,3},
                         {el,
                          [{alt,orderIn,
-                           {'#PCDATA',{integer,short}},
+                           {'#PCDATA',char},
                            [],1,1,true,undefined}],
                          0,1,undefined,4}],
                        [],undefined,undefined,4,1,1,undefined,undefined},
-                      {type,patentClassifierInfo,sequence,
+                      {type,'P:patentClassifierInfo',sequence,
                        [{el,
                          [{alt,classification,
                            {'#PCDATA',char},
@@ -1787,13 +1807,13 @@
                            [],1,1,true,undefined}],
                          0,1,undefined,4}],
                        [],undefined,undefined,4,1,1,undefined,undefined},
-                      {type,patentClassifierList,sequence,
+                      {type,'P:patentClassifierList',sequence,
                        [{el,
-                         [{alt,classifier,patentClassifierInfo,[],1,1,true,
-                           undefined}],
+                         [{alt,classifier,'P:patentClassifierInfo',[],1,1,
+                           true,undefined}],
                          0,unbound,true,2}],
                        [],undefined,undefined,2,1,1,undefined,undefined},
-                      {type,patentDetailsInfo,sequence,
+                      {type,'P:patentDetailsInfo',sequence,
                        [{el,
                          [{alt,countryCode,
                            {'#PCDATA',char},
@@ -1815,23 +1835,23 @@
                            [],1,1,true,undefined}],
                          0,1,undefined,5},
                         {el,
-                         [{alt,classifierList,patentClassifierList,[],1,1,
-                           true,undefined}],
+                         [{alt,classifierList,'P:patentClassifierList',[],1,
+                           1,true,undefined}],
                          0,1,undefined,6},
                         {el,
-                         [{alt,application,patentApplication,[],1,1,true,
+                         [{alt,application,'P:patentApplication',[],1,1,true,
                            undefined}],
                          0,1,undefined,7},
                         {el,
-                         [{alt,priorityList,patentPriorityList,[],1,1,true,
-                           undefined}],
+                         [{alt,priorityList,'P:patentPriorityList',[],1,1,
+                           true,undefined}],
                          0,1,undefined,8},
                         {el,
-                         [{alt,familyList,patentFamilyList,[],1,1,true,
+                         [{alt,familyList,'P:patentFamilyList',[],1,1,true,
                            undefined}],
                          0,1,undefined,9}],
                        [],undefined,undefined,9,1,1,undefined,undefined},
-                      {type,bookOrReportDetails,sequence,
+                      {type,'P:bookOrReportDetails',sequence,
                        [{el,
                          [{alt,publisher,
                            {'#PCDATA',char},
@@ -1839,17 +1859,17 @@
                          0,1,undefined,2},
                         {el,
                          [{alt,dayOfPublication,
-                           {'#PCDATA',{integer,byte}},
+                           {'#PCDATA',char},
                            [],1,1,true,undefined}],
                          0,1,undefined,3},
                         {el,
                          [{alt,monthOfPublication,
-                           {'#PCDATA',{integer,byte}},
+                           {'#PCDATA',char},
                            [],1,1,true,undefined}],
                          0,1,undefined,4},
                         {el,
                          [{alt,yearOfPublication,
-                           {'#PCDATA',{integer,short}},
+                           {'#PCDATA',char},
                            [],1,1,true,undefined}],
                          0,1,undefined,5},
                         {el,
@@ -1894,14 +1914,14 @@
                            [],1,1,true,undefined}],
                          0,1,undefined,14}],
                        [],undefined,undefined,14,1,1,undefined,undefined},
-                      {type,pubTypeList,sequence,
+                      {type,'P:pubTypeList',sequence,
                        [{el,
                          [{alt,pubType,
                            {'#PCDATA',char},
                            [],1,1,true,undefined}],
                          0,unbound,true,2}],
                        [],undefined,undefined,2,1,1,undefined,undefined},
-                      {type,journal,sequence,
+                      {type,'P:journal',sequence,
                        [{el,
                          [{alt,title,{'#PCDATA',char},[],1,1,true,undefined}],
                          0,1,undefined,2},
@@ -1927,7 +1947,7 @@
                          [{alt,'ESSN',{'#PCDATA',char},[],1,1,true,undefined}],
                          0,1,undefined,7}],
                        [],undefined,undefined,7,1,1,undefined,undefined},
-                      {type,journalInfo,sequence,
+                      {type,'P:journalInfo',sequence,
                        [{el,
                          [{alt,issue,{'#PCDATA',char},[],1,1,true,undefined}],
                          0,1,undefined,2},
@@ -1936,7 +1956,7 @@
                          0,1,undefined,3},
                         {el,
                          [{alt,journalIssueId,
-                           {'#PCDATA',{integer,int}},
+                           {'#PCDATA',integer},
                            [],1,1,true,undefined}],
                          0,1,undefined,4},
                         {el,
@@ -1946,12 +1966,12 @@
                          0,1,undefined,5},
                         {el,
                          [{alt,monthOfPublication,
-                           {'#PCDATA',{integer,byte}},
+                           {'#PCDATA',char},
                            [],1,1,true,undefined}],
                          0,1,undefined,6},
                         {el,
                          [{alt,yearOfPublication,
-                           {'#PCDATA',{integer,short}},
+                           {'#PCDATA',char},
                            [],1,1,true,undefined}],
                          0,1,undefined,7},
                         {el,
@@ -1960,20 +1980,21 @@
                            [],1,1,true,undefined}],
                          0,1,undefined,8},
                         {el,
-                         [{alt,journal,journal,[],1,1,true,undefined}],
+                         [{alt,journal,'P:journal',[],1,1,true,undefined}],
                          0,1,undefined,9}],
                        [],undefined,undefined,9,1,1,undefined,undefined},
-                      {type,authorIdsList,sequence,
+                      {type,'P:authorIdsList',sequence,
                        [{el,
-                         [{alt,authorId,authorId,[],1,1,true,undefined}],
+                         [{alt,authorId,'P:authorId',[],1,1,true,undefined}],
                          0,unbound,true,2}],
                        [],undefined,undefined,2,1,1,undefined,undefined},
-                      {type,investigatorList,sequence,
+                      {type,'P:investigatorList',sequence,
                        [{el,
-                         [{alt,investigator,authors,[],1,1,true,undefined}],
+                         [{alt,investigator,'P:authors',[],1,1,true,
+                           undefined}],
                          0,unbound,true,2}],
                        [],undefined,undefined,2,1,1,undefined,undefined},
-                      {type,authorId,sequence,
+                      {type,'P:authorId',sequence,
                        [{el,
                          [{alt,'#text',
                            {'#PCDATA',char},
@@ -1981,7 +2002,7 @@
                          0,1,undefined,3}],
                        [{att,type,2,true,char}],
                        undefined,undefined,3,1,1,undefined,undefined},
-                      {type,authors,sequence,
+                      {type,'P:authors',sequence,
                        [{el,
                          [{alt,collectiveName,
                            {'#PCDATA',char},
@@ -2008,7 +2029,7 @@
                            [],1,1,true,undefined}],
                          0,1,undefined,6},
                         {el,
-                         [{alt,authorId,authorId,[],1,1,true,undefined}],
+                         [{alt,authorId,'P:authorId',[],1,1,true,undefined}],
                          0,1,undefined,7},
                         {el,
                          [{alt,affiliation,
@@ -2016,18 +2037,18 @@
                            [],1,1,true,undefined}],
                          0,1,undefined,8}],
                        [],undefined,undefined,8,1,1,undefined,undefined},
-                      {type,authorsList,sequence,
+                      {type,'P:authorsList',sequence,
                        [{el,
-                         [{alt,author,authors,[],1,1,true,undefined}],
+                         [{alt,author,'P:authors',[],1,1,true,undefined}],
                          0,unbound,true,2}],
                        [],undefined,undefined,2,1,1,undefined,undefined},
-                      {type,result,sequence,
+                      {type,'P:result',sequence,
                        [{el,
-                         [{alt,request,request,[],1,1,true,undefined}],
+                         [{alt,request,'P:request',[],1,1,true,undefined}],
                          0,1,undefined,2},
                         {el,
                          [{alt,citationId,
-                           {'#PCDATA',{integer,int}},
+                           {'#PCDATA',integer},
                            [],1,1,true,undefined}],
                          0,1,undefined,3},
                         {el,
@@ -2054,18 +2075,20 @@
                            [],1,1,true,undefined}],
                          0,1,undefined,10},
                         {el,
-                         [{alt,authorList,authorsList,[],1,1,true,undefined}],
+                         [{alt,authorList,'P:authorsList',[],1,1,true,
+                           undefined}],
                          0,1,undefined,11},
                         {el,
-                         [{alt,investigatorList,investigatorList,[],1,1,true,
-                           undefined}],
+                         [{alt,investigatorList,'P:investigatorList',[],1,1,
+                           true,undefined}],
                          0,1,undefined,12},
                         {el,
-                         [{alt,authorIdList,authorIdsList,[],1,1,true,
+                         [{alt,authorIdList,'P:authorIdsList',[],1,1,true,
                            undefined}],
                          0,1,undefined,13},
                         {el,
-                         [{alt,journalInfo,journalInfo,[],1,1,true,undefined}],
+                         [{alt,journalInfo,'P:journalInfo',[],1,1,true,
+                           undefined}],
                          0,1,undefined,14},
                         {el,
                          [{alt,journalTitle,
@@ -2121,7 +2144,8 @@
                            [],1,1,true,undefined}],
                          0,1,undefined,25},
                         {el,
-                         [{alt,pubTypeList,pubTypeList,[],1,1,true,undefined}],
+                         [{alt,pubTypeList,'P:pubTypeList',[],1,1,true,
+                           undefined}],
                          0,1,undefined,26},
                         {el,
                          [{alt,brSummary,
@@ -2129,40 +2153,43 @@
                            [],1,1,true,undefined}],
                          0,1,undefined,27},
                         {el,
-                         [{alt,bookOrReportDetails,bookOrReportDetails,[],1,
-                           1,true,undefined}],
+                         [{alt,bookOrReportDetails,'P:bookOrReportDetails',
+                           [],1,1,true,undefined}],
                          0,1,undefined,28},
                         {el,
-                         [{alt,patentDetails,patentDetailsInfo,[],1,1,true,
-                           undefined}],
+                         [{alt,patentDetails,'P:patentDetailsInfo',[],1,1,
+                           true,undefined}],
                          0,1,undefined,29},
                         {el,
-                         [{alt,grantsList,grantsList,[],1,1,true,undefined}],
+                         [{alt,grantsList,'P:grantsList',[],1,1,true,
+                           undefined}],
                          0,1,undefined,30},
                         {el,
-                         [{alt,meshHeadingList,meshHeadingsList,[],1,1,true,
-                           undefined}],
+                         [{alt,meshHeadingList,'P:meshHeadingsList',[],1,1,
+                           true,undefined}],
                          0,1,undefined,31},
                         {el,
-                         [{alt,keywordList,keywordList,[],1,1,true,undefined}],
+                         [{alt,keywordList,'P:keywordList',[],1,1,true,
+                           undefined}],
                          0,1,undefined,32},
                         {el,
-                         [{alt,chemicalList,chemicalList,[],1,1,true,
+                         [{alt,chemicalList,'P:chemicalList',[],1,1,true,
                            undefined}],
                          0,1,undefined,33},
                         {el,
-                         [{alt,subsetList,subSetList,[],1,1,true,undefined}],
+                         [{alt,subsetList,'P:subSetList',[],1,1,true,
+                           undefined}],
                          0,1,undefined,34},
                         {el,
-                         [{alt,fullTextUrlList,fullTextUrlList,[],1,1,true,
-                           undefined}],
+                         [{alt,fullTextUrlList,'P:fullTextUrlList',[],1,1,
+                           true,undefined}],
                          0,1,undefined,35},
                         {el,
-                         [{alt,commentCorrectionList,commentCorrectionList,
-                           [],1,1,true,undefined}],
+                         [{alt,commentCorrectionList,
+                           'P:commentCorrectionList',[],1,1,true,undefined}],
                          0,1,undefined,36},
                         {el,
-                         [{alt,extCommentList,extCommentBean,[],1,1,true,
+                         [{alt,extCommentList,'P:extCommentBean',[],1,1,true,
                            undefined}],
                          0,1,undefined,37},
                         {el,
@@ -2178,7 +2205,7 @@
                          0,1,undefined,40},
                         {el,
                          [{alt,citedByCount,
-                           {'#PCDATA',{integer,int}},
+                           {'#PCDATA',integer},
                            [],1,1,true,undefined}],
                          0,1,undefined,41},
                         {el,
@@ -2197,8 +2224,8 @@
                            [],1,1,true,undefined}],
                          0,1,undefined,44},
                         {el,
-                         [{alt,dbCrossReferenceList,crossReferencesList,[],1,
-                           1,true,undefined}],
+                         [{alt,dbCrossReferenceList,'P:crossReferencesList',
+                           [],1,1,true,undefined}],
                          0,1,undefined,45},
                         {el,
                          [{alt,hasSupplementary,
@@ -2232,8 +2259,8 @@
                            [],1,1,true,undefined}],
                          0,1,undefined,52},
                         {el,
-                         [{alt,tmAccessionTypeList,tmAccessionTypeList,[],1,
-                           1,true,undefined}],
+                         [{alt,tmAccessionTypeList,'P:tmAccessionTypeList',
+                           [],1,1,true,undefined}],
                          0,1,undefined,53},
                         {el,
                          [{alt,dateOfCompletion,
@@ -2281,27 +2308,26 @@
                            [],1,1,true,undefined}],
                          0,1,undefined,62}],
                        [],undefined,undefined,62,1,1,undefined,undefined},
-                      {type,resultList,sequence,
+                      {type,'P:resultList',sequence,
                        [{el,
-                         [{alt,result,result,[],1,1,true,undefined}],
+                         [{alt,result,'P:result',[],1,1,true,undefined}],
                          0,unbound,true,2}],
                        [],undefined,undefined,2,1,1,undefined,undefined},
-                      {type,profile,sequence,[],
-                       [{att,name,2,true,char},
-                        {att,count,3,false,{integer,int}}],
+                      {type,'P:profile',sequence,[],
+                       [{att,name,2,true,char},{att,count,3,false,integer}],
                        undefined,undefined,3,1,1,undefined,undefined},
-                      {type,profileListBean,sequence,
+                      {type,'P:profileListBean',sequence,
                        [{el,
-                         [{alt,source,profile,[],1,1,true,undefined}],
+                         [{alt,source,'P:profile',[],1,1,true,undefined}],
                          0,unbound,true,2},
                         {el,
-                         [{alt,pubType,profile,[],1,1,true,undefined}],
+                         [{alt,pubType,'P:profile',[],1,1,true,undefined}],
                          0,unbound,true,3},
                         {el,
-                         [{alt,subset,profile,[],1,1,true,undefined}],
+                         [{alt,subset,'P:profile',[],1,1,true,undefined}],
                          0,unbound,true,4}],
                        [],undefined,undefined,4,1,1,undefined,undefined},
-                      {type,request,sequence,
+                      {type,'P:request',sequence,
                        [{el,
                          [{alt,queryString,
                            {'#PCDATA',char},
@@ -2330,12 +2356,12 @@
                          0,1,undefined,7},
                         {el,
                          [{alt,offSet,
-                           {'#PCDATA',{integer,int}},
+                           {'#PCDATA',integer},
                            [],1,1,true,undefined}],
                          0,1,undefined,8},
                         {el,
                          [{alt,pageSize,
-                           {'#PCDATA',{integer,int}},
+                           {'#PCDATA',integer},
                            [],1,1,true,undefined}],
                          0,1,undefined,9},
                         {el,
@@ -2362,7 +2388,7 @@
                            [],1,1,true,undefined}],
                          0,1,undefined,14}],
                        [],undefined,undefined,14,1,1,undefined,undefined},
-                      {type,responseWrapper,sequence,
+                      {type,'P:responseWrapper',sequence,
                        [{el,
                          [{alt,version,
                            {'#PCDATA',char},
@@ -2370,60 +2396,64 @@
                          0,1,undefined,2},
                         {el,
                          [{alt,hitCount,
-                           {'#PCDATA',{integer,int}},
+                           {'#PCDATA',integer},
                            [],1,1,true,undefined}],
                          0,1,undefined,3},
                         {el,
-                         [{alt,request,request,[],1,1,true,undefined}],
+                         [{alt,request,'P:request',[],1,1,true,undefined}],
                          0,1,undefined,4},
                         {el,
-                         [{alt,profileList,profileListBean,[],1,1,true,
+                         [{alt,profileList,'P:profileListBean',[],1,1,true,
                            undefined}],
                          0,1,undefined,5},
                         {el,
-                         [{alt,resultList,resultList,[],1,1,true,undefined}],
+                         [{alt,resultList,'P:resultList',[],1,1,true,
+                           undefined}],
                          0,1,undefined,6},
                         {el,
-                         [{alt,dbCountList,dbCountList,[],1,1,true,undefined}],
+                         [{alt,dbCountList,'P:dbCountList',[],1,1,true,
+                           undefined}],
                          0,1,undefined,7},
                         {el,
-                         [{alt,dbCrossReferenceList,dbCrossReferenceList,[],
-                           1,1,true,undefined}],
+                         [{alt,dbCrossReferenceList,'P:dbCrossReferenceList',
+                           [],1,1,true,undefined}],
                          0,1,undefined,8},
                         {el,
-                         [{alt,citationList,citationList,[],1,1,true,
+                         [{alt,citationList,'P:citationList',[],1,1,true,
                            undefined}],
                          0,1,undefined,9},
                         {el,
-                         [{alt,referenceList,referencesList,[],1,1,true,
+                         [{alt,referenceList,'P:referencesList',[],1,1,true,
                            undefined}],
                          0,1,undefined,10},
                         {el,
-                         [{alt,semanticTypeCountList,semanticTypeCounts,[],1,
-                           1,true,undefined}],
+                         [{alt,semanticTypeCountList,'P:semanticTypeCounts',
+                           [],1,1,true,undefined}],
                          0,1,undefined,11},
                         {el,
-                         [{alt,semanticTypeList,minedTermsList,[],1,1,true,
-                           undefined}],
+                         [{alt,semanticTypeList,'P:minedTermsList',[],1,1,
+                           true,undefined}],
                          0,1,undefined,12},
                         {el,
-                         [{alt,searchTermList,searchTerms,[],1,1,true,
+                         [{alt,searchTermList,'P:searchTerms',[],1,1,true,
                            undefined}],
                          0,1,undefined,13},
                         {el,
-                         [{alt,linksCountList,labsProviderCountList,[],1,1,
-                           true,undefined}],
+                         [{alt,linksCountList,'P:labsProviderCountList',[],1,
+                           1,true,undefined}],
                          0,1,undefined,14},
                         {el,
-                         [{alt,providers,labsProviders,[],1,1,true,undefined}],
+                         [{alt,providers,'P:labsProviders',[],1,1,true,
+                           undefined}],
                          0,1,undefined,15}],
                        [],undefined,undefined,15,1,1,undefined,undefined},
-                      {type,searchPublicationsResponse,sequence,
+                      {type,'P:searchPublicationsResponse',sequence,
                        [{el,
-                         [{alt,return,responseWrapper,[],1,1,true,undefined}],
+                         [{alt,return,'P:responseWrapper',[],1,1,true,
+                           undefined}],
                          0,1,undefined,2}],
                        [],undefined,undefined,2,1,1,undefined,undefined},
-                      {type,searchPublications,sequence,
+                      {type,'P:searchPublications',sequence,
                        [{el,
                          [{alt,queryString,
                            {'#PCDATA',char},
@@ -2436,7 +2466,7 @@
                          0,1,undefined,3},
                         {el,
                          [{alt,offSet,
-                           {'#PCDATA',{integer,int}},
+                           {'#PCDATA',integer},
                            [],1,1,true,undefined}],
                          0,1,undefined,4},
                         {el,
@@ -2453,9 +2483,8 @@
                          [{alt,email,{'#PCDATA',char},[],1,1,true,undefined}],
                          0,1,undefined,7}],
                        [],undefined,undefined,7,1,1,undefined,undefined}],
-                     [{ns,"http://webservice.cdb.ebi.ac.uk/",undefined,
-                       unqualified},
-                      {ns,"http://ws-i.org/profiles/basic/1.1/xsd","P0",
+                     [{ns,"http://webservice.cdb.ebi.ac.uk/","P",unqualified},
+                      {ns,"http://ws-i.org/profiles/basic/1.1/xsd","P",
                        unqualified},
                       {ns,"http://www.w3.org/2001/XMLSchema","xsd",qualified}],
                      undefined,[],false,skip},

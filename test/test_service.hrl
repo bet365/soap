@@ -57,11 +57,14 @@
                          role :: string(),
                          detail :: [#faultdetail{}]}).
 
+-ifndef(ERLSOM_QNAME_TYPES).
+-define(ERLSOM_QNAME_TYPES, true).
 %% xsd:QName values are translated to #qname{} records.
 -record(qname, {uri :: string(),
                 localPart :: string(),
                 prefix :: string(),
                 mappedPrefix :: string()}).
+-endif.
 
 
 
